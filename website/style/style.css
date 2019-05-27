@@ -17,6 +17,7 @@ html {
 body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
+    padding: 0;
 }
 
 /* Button layout */
@@ -37,6 +38,10 @@ body {
 
 /* Navbar layout */
 
+.navbar-nav {
+    padding: 0;
+}
+
 div .navbar-nav {
     background-color: var(--main-darkblue-color);
     background: linear-gradient(to bottom, #005887 19%, #009FB3 82%);
@@ -56,4 +61,25 @@ div .navbar-nav {
 
 div .nav-items {
     margin: auto;
+}
+
+/* Footer layout */
+
+footer {
+    width: 100%;
+    background-color: var(--main-darkblue-color);
+    height: 150px;
+    color: var(--main-lightlight-color);
+    text-align: center;
+    padding: 50px;
+    margin: auto;
+}
+
+.footer-items {
+    margin: auto;
+}
+
+.icons {
+    text-decoration: none;
+    color: var(--main-lightlight-color);
 }

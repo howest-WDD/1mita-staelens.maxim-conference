@@ -1,0 +1,148 @@
+/* Variabeles */
+
+:root {
+  --main-lightdetail-color: #c0fcd1;
+  --main-detail-color: #82fab2;
+  --main-mainbtn-color: #20eda3;
+  --main-lightblue-color: #00d7bc;
+  --main-regularblue-color: #009fb3;
+  --main-darkblue-color: #005887;
+  --main-lightlight-color: #ffffff;
+}
+
+/* End variabels */
+
+html {
+  margin: 0;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--main-lightlight-color);
+}
+
+/* Button layout */
+
+.btn {
+  background-color: var(--main-mainbtn-color);
+  color: var(--main-lightlight-color);
+  border: solid thin --main-mainbtn-color;
+  border-radius: 0.75rem;
+}
+
+.btn:hover {
+  background-color: var(--main-lightlight-color);
+  color: var(--main-regularblue-color);
+  border: 2px solid --main-regularblue-color;
+  border-radius: 0.75rem;
+}
+
+/* End button layout */
+
+/* Navbar layout */
+
+.navbar-nav {
+  padding: 0;
+}
+
+div .navbar-nav {
+  background-color: var(--main-darkblue-color);
+  background: linear-gradient(to bottom, #005887 19%, #009fb3 82%);
+  width: 100%;
+  height: 100px;
+}
+
+.nav-items a {
+  text-decoration: none;
+  color: var(--main-lightlight-color) !important;
+}
+
+#nav-logo img {
+  height: 50px;
+  width: 200px;
+}
+
+div .nav-items {
+  margin: auto;
+}
+
+/* End navbar */
+
+/* Content layout */
+
+.homepage-content {
+  margin: auto;
+  float: left;
+}
+
+.homepage-img{
+    width: 100%;
+}
+
+.content{
+    overflow: auto;
+    height: calc(100% - 100px - 200px);
+    padding-bottom: 50px;
+}
+
+/* Carousel layout */
+
+.carousel {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  height: 500px;
+  width: 80%;
+  align-content: center;
+  margin: auto;
+}
+
+.carousel-inner > .carousel-item > img {
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 400px;
+}
+
+.carousel-caption{
+  top: 100px;
+}
+
+/* End carousel */
+
+/* Footer layout */
+
+footer {
+  background-color: var(--main-darkblue-color);
+  height: 200px;
+  color: var(--main-lightlight-color);
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-items {
+  margin: auto;
+  padding-left: 50px;
+}
+
+.footer-content {
+  padding-top: 35px;
+}
+
+.icons a {
+  text-decoration: none;
+  color: var(--main-lightlight-color);
+}
+
+.icons {
+  font-size: 2rem;
+}
+
+.footer-items a {
+  text-decoration: none;
+  color: var(--main-lightlight-color);
+}
+
+/* End footer */

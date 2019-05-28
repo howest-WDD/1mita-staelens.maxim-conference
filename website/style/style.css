@@ -29,12 +29,17 @@ body {
   background-color: var(--main-mainbtn-color);
   color: var(--main-lightlight-color);
   border-radius: 0.75rem;
+  font-weight: bold;
 }
 
 .btn-like {
   font-size: 1.5rem;
   margin-right: 10px;
   height: 90%;
+}
+
+.btn-session{
+  width: 15%;
 }
 
 .btn-more {
@@ -48,7 +53,7 @@ body {
   border-radius: 0.75rem;
 }
 
-.btn:focus{
+.btn:focus {
   background-color: var(--main-lightlight-color);
   color: var(--main-regularblue-color);
   border: 2px solid --main-regularblue-color;
@@ -84,6 +89,8 @@ div .nav-items {
 }
 
 /* End navbar */
+
+/* Homepage */
 
 /* Content layout homepage*/
 
@@ -126,6 +133,10 @@ div .nav-items {
 
 /* End carousel */
 
+/* End homepage */
+
+/* Overzicht sprekers */
+
 /* Infocards layout overzicht sprekers */
 
 .card {
@@ -154,28 +165,59 @@ div .nav-items {
 
 /* Popular/Likes navigation for speakers */
 
-.second-nav-speakers{
+.second-nav-speakers {
   height: 75px;
   background-color: var(--main-darkblue-color);
 }
 
-.second-nav-speakers .row{
+.second-nav-speakers .row {
   height: 75px;
 }
 
-.nav-speakers{
+.nav-speakers {
   margin: auto;
   padding-top: 25px;
   color: var(--main-lightlight-color);
   text-align: center;
 }
 
-.nav-speakers a{
+.nav-speakers a {
   text-decoration: none;
   color: var(--main-lightlight-color);
 }
 
 /* End infocards layout */
+
+/* End overzicht sprekers */
+
+/* Overzicht zalen */
+
+.content-zalen {
+  width: 75%;
+  margin: auto;
+  
+}
+
+.table-pixel{
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.thead-colour{
+  background-color: var(--main-regularblue-color);
+  color: var(--main-lightlight-color);
+}
+
+.table-design{
+  border: 1px solid grey;
+}
+
+tbody>tr:hover{
+  background-color: var(--main-detail-color);
+}
+
+
+/* End overzicht zalen */
 
 /* Footer layout */
 

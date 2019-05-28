@@ -212,6 +212,10 @@ div .nav-items {
   border: 1px solid grey;
 }
 
+tbody>tr:hover{
+  background-color: var(--main-detail-color);
+}
+
 
 /* End overzicht zalen */
 

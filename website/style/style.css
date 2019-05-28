@@ -28,15 +28,30 @@ body {
 .btn {
   background-color: var(--main-mainbtn-color);
   color: var(--main-lightlight-color);
-  border: solid thin --main-mainbtn-color;
   border-radius: 0.75rem;
+}
+
+.btn-like {
+  font-size: 1.5rem;
+  margin-right: 10px;
+  height: 90%;
+}
+
+.btn-more {
+  width: 100%;
 }
 
 .btn:hover {
   background-color: var(--main-lightlight-color);
   color: var(--main-regularblue-color);
-  border: 2px solid --main-regularblue-color;
+  border: 2px solid var(--main-regularblue-color) !important;
   border-radius: 0.75rem;
+}
+
+.btn:focus{
+  background-color: var(--main-lightlight-color);
+  color: var(--main-regularblue-color);
+  border: 2px solid --main-regularblue-color;
 }
 
 /* End button layout */
@@ -70,24 +85,24 @@ div .nav-items {
 
 /* End navbar */
 
-/* Content layout */
+/* Content layout homepage*/
 
 .homepage-content {
   margin: auto;
   float: left;
 }
 
-.homepage-img{
-    width: 100%;
+.homepage-img {
+  width: 100%;
 }
 
-.content{
-    overflow: auto;
-    height: calc(100% - 100px - 200px);
-    padding-bottom: 50px;
+.content {
+  overflow: auto;
+  height: calc(100% - 100px - 200px);
+  padding-bottom: 50px;
 }
 
-/* Carousel layout */
+/* Carousel layout homepage */
 
 .carousel {
   padding-top: 50px;
@@ -105,11 +120,62 @@ div .nav-items {
   height: 400px;
 }
 
-.carousel-caption{
+.carousel-caption {
   top: 100px;
 }
 
 /* End carousel */
+
+/* Infocards layout overzicht sprekers */
+
+.card {
+  width: 75%;
+  margin: auto;
+  border: 1px solid grey !important;
+  margin-top: 50px;
+  margin-bottom: 25px;
+}
+
+.likes {
+  text-align: right;
+}
+
+.card-img-top {
+  width: 85%;
+  margin: auto;
+  padding-top: 25px;
+}
+
+.content-speakers {
+  /* Nog aan te passen, grootte infocards op pagina*/
+  width: 100%;
+  margin: auto;
+}
+
+/* Popular/Likes navigation for speakers */
+
+.second-nav-speakers{
+  height: 75px;
+  background-color: var(--main-darkblue-color);
+}
+
+.second-nav-speakers .row{
+  height: 75px;
+}
+
+.nav-speakers{
+  margin: auto;
+  padding-top: 25px;
+  color: var(--main-lightlight-color);
+  text-align: center;
+}
+
+.nav-speakers a{
+  text-decoration: none;
+  color: var(--main-lightlight-color);
+}
+
+/* End infocards layout */
 
 /* Footer layout */
 

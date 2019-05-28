@@ -252,7 +252,25 @@ tbody > tr:hover {
   margin-bottom: 50px;
 }
 
+.content-detail a {
+  text-decoration: none;
+  color: black;
+}
+
 /* End detail spreker */
+
+/* Detail sessie */
+
+.sessie-content p{
+  margin-top: 25px;
+}
+
+.sessie-content img{
+  width: 100%;
+  margin-top: 50px;
+}
+
+/* End detail sessie */
 
 /* Footer layout */
 

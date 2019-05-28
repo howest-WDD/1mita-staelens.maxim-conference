@@ -152,6 +152,29 @@ div .nav-items {
   margin: auto;
 }
 
+/* Popular/Likes navigation for speakers */
+
+.second-nav-speakers{
+  height: 75px;
+  background-color: var(--main-darkblue-color);
+}
+
+.second-nav-speakers .row{
+  height: 75px;
+}
+
+.nav-speakers{
+  margin: auto;
+  padding-top: 25px;
+  color: var(--main-lightlight-color);
+  text-align: center;
+}
+
+.nav-speakers a{
+  text-decoration: none;
+  color: var(--main-lightlight-color);
+}
+
 /* End infocards layout */
 
 /* Footer layout */

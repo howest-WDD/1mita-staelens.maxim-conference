@@ -1,3 +1,22 @@
+<?php 
+
+require_once('website/script/database.php');
+
+//Query voor sprekers informatie op te halen
+//$sqlDetailSprekers = "SELECT idsprekers, voornaam, naam, afbeelding, bio, lanidID FROM sprekers s 
+//INNER JOIN landen l ON s.lanidID = l.idlanden";
+
+$sqlDetailSprekers = "SELECT * FROM sprekers WHERE idsprekers = {$_GET['idsprekers']}";
+
+//Query voor sprekers
+if(!$resDetailSprekers = $mysqli->query($sqlDetailSprekers)){
+    echo "Oeps, een query foutje op DB voor opzoeken eigen playlist";
+    print("<p>Error: " . $mysqli->error . "</p>");
+    exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,34 +72,52 @@
         <div class="h-100 container content-border">
             <div class="content-detail-spreker">
                 <div class="row">
-                    <div class="col-4">
-                        <img src="website/images/speakers/x250/31m.jpg" alt="">
-                        <div class="row icons-detail">
-                            <ul>
-                                <a href="#"><i class="far fa-heart"></i></i></a>
-                                <a href="#"><i class="fab fa-facebook-square"></i></a>
-                                <a href="#"><i class="fab fa-twitter-square"></i></a>
-                                <a href="#"><i class="fab fa-linkedin"></i></a>
-                            </ul>
-                        </div>
-                        <p>20 likes</p>
-                    </div>
-                    <div class="col-8 content-detail">
-                        <h4><b>Keith Peters</b></h4>
-                        <h5><b>Verenigde Staten</b></h5>
-                        <b>Bio</b>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem quisquam ex ipsa
-                            dolor error, unde, expedita tempore a vero pariatur iste minus amet iure non quidem, at
-                            saepe est accusamus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem
-                            quisquam ex ipsa
-                            dolor error, unde, expedita tempore a vero pariatur iste minus amet iure non quidem, at
-                            saepe est accusamus!
-                        </p>
-                        <b>Socials and website</b> <br>
-                        <a href="#">wwww.programmingisart.com</a> <br>
-                        <a href="">keith.peters@gmail.com</a>
-                    </div>
+
+
+                <?php 
+                
+                //Ophalen van het resultaat van de query
+                //Doorlopen van het resultaat zolang er rijen zijn
+                while($row = $resDetailSprekers->fetch_assoc()){
+
+                    //Opvullen tijdelijke variabele
+                    $tempId = $row['idsprekers'];
+                    $tempLandId = $row['lanidID'];
+                    $tempVoornaam = $row['voornaam'];
+                    $tempNaam = $row['naam'];
+                    $tempAfbeelding = $row['afbeelding'];
+                    $tempBio = $row['bio'];
+
+                    //Alles printen
+                    print('<div class="col-4">');
+                    print('<img src="website/images/speakers/x250/' . $tempAfbeelding . '" alt="">');
+                    print('<div class="row icons-detail">');
+                    print('<ul>');
+                    print('<a href="#"><i class="far fa-heart"></i></i></a>&nbsp');
+                    print('<a href="https://www.facebook.com/"><i class="fab fa-facebook-square"></i></a>&nbsp');
+                    print('<a href="https://twitter.com"><i class="fab fa-twitter-square"></i></a>&nbsp');
+                    print('<a href="https://www.linkedin.com"><i class="fab fa-linkedin"></i></a>');
+                    print('</ul>');
+                    print('</div>');
+                    print('<p>20 likes</p>');
+                    print('</div>');
+                    print('<div class="col-8 content-detail">');
+                    print('<h4><b>' . $tempVoornaam . '</b>&nbsp;<b>' . $tempNaam . '</b></h4>');
+                    print('<h5><b>' . $tempLandId . '</b></h5>');
+                    print('<b>Bio</b>');
+                    print('<p>' . $tempBio . '</p>');
+                    print('<b>Socials and website</b> <br>');
+                    print('<a href="#">wwww.programmingisart.com</a> <br>');
+                    print('<a href="">keith.peters@gmail.com</a>');
+                    print('</div>');
+
+                    
+
+                }
+                
+                ?> 
+
+                                                  
                 </div>
             </div>
         </div>

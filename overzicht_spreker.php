@@ -7,7 +7,7 @@ $sqlOverzichtSprekers = "SELECT idsprekers, voornaam, naam, afbeelding, bio FROM
 
 //Query voor sprekers
 if(!$resOverzichtSprekers = $mysqli->query($sqlOverzichtSprekers)){
-    echo "Oeps, een query foutje op DB voor opzoeken eigen playlist";
+    echo "Oeps, een query foutje op DB voor opzoeken sprekers";
     print("<p>Error: " . $mysqli->error . "</p>");
     exit();
 }

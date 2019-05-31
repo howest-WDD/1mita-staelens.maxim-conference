@@ -10,7 +10,7 @@ $sqlDetailSprekers = "SELECT * FROM sprekers WHERE idsprekers = {$_GET['idspreke
 
 //Query voor sprekers
 if(!$resDetailSprekers = $mysqli->query($sqlDetailSprekers)){
-    echo "Oeps, een query foutje op DB voor opzoeken eigen playlist";
+    echo "Oeps, een query foutje op DB voor opzoeken sprekers";
     print("<p>Error: " . $mysqli->error . "</p>");
     exit();
 }

@@ -121,7 +121,7 @@ if(!$resOverzichtZaal4 = $mysqli->query($sqlOverzichtZaal4)){
                 $tempTime = $row['start'];
 
                 print('<tbody>');
-                print('<tr onclick="document.location = #"');
+                print('<tr onclick=document.location = "detail_sessie.php?idsessie=' . $tempId . '">');
                 print('<th></th>');
                 print('<td><b>Starts at:  ' . $tempTime . '</b></td>');
                 print('<td><b>' . $tempTitel . '</b></td>');

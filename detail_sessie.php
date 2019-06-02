@@ -1,3 +1,20 @@
+<?php 
+
+require_once('website/script/database.php');
+
+//Query voor sessie informatie op te halen
+
+$sqlDetailSessies = "SELECT * FROM sessies";
+
+//Query voor sessies
+if(!$resDetailSessies = $mysqli->query($sqlDetailSessies)){
+    echo "Oeps, een query foutje op DB voor opzoeken sessies";
+    print("<p>Error: " . $mysqli->error . "</p>");
+    exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,32 +69,49 @@
         </nav>
         <div class="h-100 container content-border">
             <div class="content-detail-sessie">
-                <div class="row">
-                    <div class="col-7 sessie-content">
-                        <h4><b>Programming Art</b></h4>
-                        <h5><b>Keith Peters</b></h5> <br>
-                        Auditorium - Pixel 1 <br>
-                        13.00h - 14.00h
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem quisquam ex ipsa
-                            dolor error, unde, expedita tempore a vero pariatur iste minus amet iure non quidem, at
-                            saepe est accusamus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem
-                            quisquam ex ipsa
-                            dolor error, unde, expedita tempore a vero pariatur iste minus amet iure non quidem, at
-                            saepe est accusamus!
-                        </p>
-                        <div class="row icons-detail">
-                            <ul>
-                                <a href="#"><i class="fab fa-facebook-square"></i></a>
-                                <a href="#"><i class="fab fa-twitter-square"></i></a>
-                                <a href="#"><i class="fab fa-linkedin"></i></a>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-5 sessie-content">
-                        <img src="website/images/sessions/programming-art.jpg" alt="">
-                    </div>
-                </div>
+            
+            <?php
+            
+                //Ophalen van het resultaat van de query
+                //Doorlopen van het resultaat zolang er rijen zijn
+                while($row = $resDetailSessies->fetch_assoc()){
+
+                    //Opvullen tijdelijke variabele
+                    $tempId = $row['idsessie'];
+                    $tempTitel = $row['titel'];
+                    $tempTime = $row['start'];
+                    $tempOmschrijving = $row['omschrijving'];
+                    $tempAfbeelding = $row['afbeelding'];
+                    $tempZaal = $row['zaalID'];
+
+                    print('<div class="row">');
+                    print('<div class="col-7 sessie-content">');
+                    print('<h4><b>' . $tempTitel . '</b></h4>');
+                    print('<h5><b>Keith Peters</b></h5> <br>');
+                    print('Auditorium - Pixel 1 <br>');
+                    print('' . $tempOmschrijving . '');
+                    print('<p>' . $tempOmschrijving . '</p>');
+                    print('<div class="row icons-detail">');
+                    print('<ul>');
+                    print('<a href="#"><i class="fab fa-facebook-square"></i></a>');
+                    print('<a href="#"><i class="fab fa-twitter-square"></i></a>');
+                    print('<a href="#"><i class="fab fa-linkedin"></i></a>');
+                    print('</ul>');
+                    print('</div>');
+                    print('</div>');
+                    print('<div class="col-5 sessie-content">');
+                    print('<img src="website/images/sessions/' . $tempAfbeelding . '" alt="">');
+                    print('</div>');
+                    print('</div>');
+                    
+
+
+                }
+
+
+            
+            ?>
+             
             </div>
         </div>
         <footer class="row fixed-bottom">

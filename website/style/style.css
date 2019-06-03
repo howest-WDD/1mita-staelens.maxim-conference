@@ -121,7 +121,7 @@ div .nav-items {
   margin: auto;
 }
 
-.carousel-inner > .carousel-item > img {
+.carousel-inner>.carousel-item>img {
   top: 0;
   left: 0;
   min-width: 100%;
@@ -212,7 +212,7 @@ div .nav-items {
   border: 1px solid var(--main-border-color);
 }
 
-tbody > tr:hover {
+tbody>tr:hover {
   background-color: var(--main-detail-color);
 }
 
@@ -271,6 +271,18 @@ tbody > tr:hover {
 }
 
 /* End detail sessie */
+
+/* Admin php */
+
+/* Sessies php*/
+
+. {
+  padding-bottom: 100px;
+}
+
+/* End sessies php*/
+
+/* End admin php*/
 
 /* Footer layout */
 

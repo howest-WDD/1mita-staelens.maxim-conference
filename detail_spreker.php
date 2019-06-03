@@ -6,7 +6,8 @@ require_once('website/script/database.php');
 //$sqlDetailSprekers = "SELECT idsprekers, voornaam, naam, afbeelding, bio, lanidID FROM sprekers s 
 //INNER JOIN landen l ON s.lanidID = l.idlanden";
 
-$sqlDetailSprekers = "SELECT * FROM sprekers WHERE idsprekers = {$_GET['idsprekers']}";
+$sqlDetailSprekers = "SELECT ss.idsprekers, ss.voornaam, ss.naam, ss.afbeelding, ss.bio, l.idlanden, l.voluit FROM sprekers ss 
+INNER JOIN landen l ON l.idlanden = ss.lanidID WHERE idsprekers = {$_GET['idsprekers']}";
 
 //Query voor sprekers
 if(!$resDetailSprekers = $mysqli->query($sqlDetailSprekers)){
@@ -82,11 +83,12 @@ if(!$resDetailSprekers = $mysqli->query($sqlDetailSprekers)){
 
                     //Opvullen tijdelijke variabele
                     $tempId = $row['idsprekers'];
-                    $tempLandId = $row['lanidID'];
+                    $tempLand = $row['voluit'];
                     $tempVoornaam = $row['voornaam'];
                     $tempNaam = $row['naam'];
                     $tempAfbeelding = $row['afbeelding'];
                     $tempBio = $row['bio'];
+                    
 
                     //Alles printen
                     print('<div class="col-4">');
@@ -103,7 +105,7 @@ if(!$resDetailSprekers = $mysqli->query($sqlDetailSprekers)){
                     print('</div>');
                     print('<div class="col-8 content-detail">');
                     print('<h4><b>' . $tempVoornaam . '</b>&nbsp;<b>' . $tempNaam . '</b></h4>');
-                    print('<h5><b>' . $tempLandId . '</b></h5>');
+                    print('<h5><b>' . $tempLand . '</b></h5>');
                     print('<b>Bio</b>');
                     print('<p>' . $tempBio . '</p>');
                     print('<b>Socials and website</b> <br>');

@@ -1,3 +1,21 @@
+<?php 
+
+require_once('website/script/database.php');
+
+//Query voor sessie informatie op te halen
+
+$sqlDetailSessies = "SELECT s.idsessie, s.titel, s.start, s.omschrijving, s.afbeelding, s.zaalID, s.sprekerID, s.likecounter, z.idzalen, z.naam, ss.naam AS achternaam, ss.voornaam FROM sessies AS s 
+INNER JOIN zalen AS z ON s.zaalID = z.idzalen INNER JOIN sprekers AS ss ON s.sprekerID = ss.idsprekers WHERE s.idsessie = {$_GET['idsessie']}";
+
+//Query voor sessies
+if(!$resDetailSessies = $mysqli->query($sqlDetailSessies)){
+    echo "Oeps, een query foutje op DB voor opzoeken sessies";
+    print("<p>Error: " . $mysqli->error . "</p>");
+    exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,37 +69,55 @@
             </div>
         </nav>
         <div class="h-100 container content-border">
-            <div class="content-detail-spreker">
-                <div class="row">
-                    <div class="col-4">
-                        <img src="website/images/speakers/x250/31m.jpg" alt="">
-                        <div class="row icons-detail">
-                            <ul>
-                                <a href="#"><i class="far fa-heart"></i></i></a>
-                                <a href="#"><i class="fab fa-facebook-square"></i></a>
-                                <a href="#"><i class="fab fa-twitter-square"></i></a>
-                                <a href="#"><i class="fab fa-linkedin"></i></a>
-                            </ul>
-                        </div>
-                        <p>20 likes</p>
-                    </div>
-                    <div class="col-8 content-detail">
-                        <h4><b>Keith Peters</b></h4>
-                        <h5><b>Verenigde Staten</b></h5>
-                        <b>Bio</b>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem quisquam ex ipsa
-                            dolor error, unde, expedita tempore a vero pariatur iste minus amet iure non quidem, at
-                            saepe est accusamus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem
-                            quisquam ex ipsa
-                            dolor error, unde, expedita tempore a vero pariatur iste minus amet iure non quidem, at
-                            saepe est accusamus!
-                        </p>
-                        <b>Socials and website</b> <br>
-                        <a href="#">wwww.programmingisart.com</a> <br>
-                        <a href="">keith.peters@gmail.com</a>
-                    </div>
-                </div>
+            <div class="content-detail-sessie">
+            
+            <?php
+            
+                //Ophalen van het resultaat van de query
+                //Doorlopen van het resultaat zolang er rijen zijn
+                while($row = $resDetailSessies->fetch_assoc()){
+
+                    //Opvullen tijdelijke variabele
+                    $tempId = $row['idsessie'];
+                    $tempTitel = $row['titel'];
+                    $tempTime = $row['start'];
+                    $tempOmschrijving = $row['omschrijving'];
+                    $tempAfbeelding = $row['afbeelding'];
+                    $tempZaal = $row['zaalID'];
+                    $tempZaalNaam = $row['naam'];
+                    $tempSprekervoornaam = $row['voornaam'];
+                    $tempSprekernaam = $row['achternaam'];
+                    
+
+                    print('<div class="row">');
+                    print('<div class="col-7 sessie-content">');
+                    print('<h4><b>' . $tempTitel . '</b></h4>');
+                    print('<h5><b>' . $tempSprekervoornaam . '</b>&nbsp;<b>' . $tempSprekernaam . '</b></h5> <br>');
+                    print('' . $tempZaalNaam . '<br>');
+                    print('This session starts at: ' . $tempTime . '');
+                    print('<p>' . $tempOmschrijving . '</p>');
+                    print('<div class="row icons-detail">');
+                    print('<ul>');
+                    print('<a href="like_code.php?idsessie=' . $tempId . '"><i class="far fa-heart"></i></i></a>&nbsp;');
+                    print('<a href="#"><i class="fab fa-facebook-square"></i></a>&nbsp;');
+                    print('<a href="#"><i class="fab fa-twitter-square"></i></a>&nbsp;');
+                    print('<a href="#"><i class="fab fa-linkedin"></i></a>');
+                    print('</ul>');
+                    print('</div>');
+                    print('</div>');
+                    print('<div class="col-5 sessie-content">');
+                    print('<img src="website/images/sessions/' . $tempAfbeelding . '" alt="">');
+                    print('</div>');
+                    print('</div>');
+                    
+
+
+                }
+
+
+            
+            ?>
+             
             </div>
         </div>
         <footer class="row fixed-bottom">

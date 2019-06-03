@@ -1,3 +1,30 @@
+<?php 
+
+require_once('website/script/database.php');
+
+//Query voor sprekers informatie op te halen
+$sqlOverzichtSprekers = "SELECT idsprekers, voornaam, naam, afbeelding, bio FROM sprekers";
+
+//Query voor sprekers
+if(!$resOverzichtSprekers = $mysqli->query($sqlOverzichtSprekers)){
+    echo "Oeps, een query foutje op DB voor opzoeken sprekers";
+    print("<p>Error: " . $mysqli->error . "</p>");
+    exit();
+}
+
+//Functie om woorden in bio te limiteren
+function excerpt($content,$numberOfWords = 10){
+    $contentWords = substr_count($content," ") + 1;
+    $words = explode(" ",$content,($numberOfWords+1));
+    if( $contentWords > $numberOfWords ){
+        $words[count($words) - 1] = '...';
+    }
+    $excerpt = join(" ",$words);
+    return $excerpt;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,37 +77,57 @@
                 </ul>
             </div>
         </nav>
-        <div class="h-100 container content-border">
-            <div class="content-detail-sessie">
-                <div class="row">
-                    <div class="col-7 sessie-content">
-                        <h4><b>Programming Art</b></h4>
-                        <h5><b>Keith Peters</b></h5> <br>
-                        Auditorium - Pixel 1 <br>
-                        13.00h - 14.00h
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem quisquam ex ipsa
-                            dolor error, unde, expedita tempore a vero pariatur iste minus amet iure non quidem, at
-                            saepe est accusamus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem
-                            quisquam ex ipsa
-                            dolor error, unde, expedita tempore a vero pariatur iste minus amet iure non quidem, at
-                            saepe est accusamus!
-                        </p>
-                        <div class="row icons-detail">
-                            <ul>
-                                <a href="#"><i class="fab fa-facebook-square"></i></a>
-                                <a href="#"><i class="fab fa-twitter-square"></i></a>
-                                <a href="#"><i class="fab fa-linkedin"></i></a>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-5 sessie-content">
-                        <img src="website/images/sessions/programming-art.jpg" alt="">
-                    </div>
-                </div>
+        <div class="second-nav-speakers">
+            <div class="row nav-speakers">
+                <div class="col-2"><a href="#">Newest</a></div>
+                <div class="col-2"><a href="#">Most popular</a></div>
+                <div class="col-2"><a href="#">Most likes</a></div>
             </div>
         </div>
-        <footer class="row fixed-bottom">
+        <div class="h-100 content-speakers">
+            <div class="row">
+
+            <?php
+                //Ophalen van het resultaat van de query
+                //Doorlopen van het resultaat zolang er rijen zijn
+                while($row = $resOverzichtSprekers->fetch_assoc()){
+
+                //Opvullen tijdelijke variabele
+                $tempId = $row['idsprekers'];
+                $tempVoornaam = $row['voornaam'];
+                $tempNaam = $row['naam'];
+                $tempAfbeelding = $row['afbeelding'];
+                $tempBio = $row['bio'];
+
+                //Alles printen
+                print('<div class="col-3">');
+                print('<div class="card">');
+                print('<img class="card-img-top" src="website/images/speakers/x250/' . $tempAfbeelding . '" alt="Card image">');
+                print('<div class="card-body">');
+                print('<div class="row">');
+                print('<div class="col-8">');
+                print('<h4 class="card-title"><b>' . $tempVoornaam . '</b>&nbsp;<b>' . $tempNaam . '</b></h4>');
+                print('</div>');
+                print('<div class="col-4">');
+                print('<p class="likes">20 likes</p>');
+                print('</div>');
+                print('</div>');
+                print('<p class="card-text">' . excerpt($tempBio, 10)  . '</p>');
+                print('<div class="row">');
+                print('<div class="col-2"><button class="btn-like"><i class="far fa-heart"></i></button></div>');
+                print('<div class="col-10"><a href="detail_spreker.php?idsprekers=' . $tempId .'" class="btn btn-more">More info</a></div>');
+                print('</div>');
+                print('</div>');
+                print('</div>');
+                print('</div>');
+
+                }
+
+                ?>
+
+            </div>
+        </div>
+        <footer class="row">
             <section class="col-3 footer-content">
                 <div class="row footer-items">
                     <b>Sign up for the newsletter</b>

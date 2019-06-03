@@ -121,10 +121,9 @@ if(!$resOverzichtZaal4 = $mysqli->query($sqlOverzichtZaal4)){
                 $tempTime = $row['start'];
 
                 print('<tbody>');
-                print('<tr onclick=document.location = "detail_sessie.php?idsessie=' . $tempId . '">');
-                print('<th></th>');
+                print('<tr onclick=document.location = "#">');
                 print('<td><b>Starts at:  ' . $tempTime . '</b></td>');
-                print('<td><b>' . $tempTitel . '</b></td>');
+                print('<td><a href="detail_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;"><b>' . $tempTitel . '</b></a></td>');
                 print('<td></td>');
                 print('<td><b>Edit</b></td>');
                 print('</tr>');
@@ -166,10 +165,9 @@ if(!$resOverzichtZaal4 = $mysqli->query($sqlOverzichtZaal4)){
                 $tempTime = $row['start'];
 
                 print('<tbody>');
-                print('<tr onclick="document.location = #"');
-                print('<th></th>');
+                print('<tr onclick="document.location = #">');
                 print('<td><b>Starts at:  ' . $tempTime . '</b></td>');
-                print('<td><b>' . $tempTitel . '</b></td>');
+                print('<td><a href="detail_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;"><b>' . $tempTitel . '</b></a></td>');
                 print('<td></td>');
                 print('<td><b>Edit</b></td>');
                 print('</tr>');
@@ -210,10 +208,9 @@ if(!$resOverzichtZaal4 = $mysqli->query($sqlOverzichtZaal4)){
                 $tempTime = $row['start'];
 
                 print('<tbody>');
-                print('<tr onclick="document.location = #"');
-                print('<th></th>');
+                print('<tr onclick="document.location = #">');
                 print('<td><b>Starts at:  ' . $tempTime . '</b></td>');
-                print('<td><b>' . $tempTitel . '</b></td>');
+                print('<td><a href="detail_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;"><b>' . $tempTitel . '</b></a></td>');
                 print('<td></td>');
                 print('<td><b>Edit</b></td>');
                 print('</tr>');
@@ -254,11 +251,10 @@ if(!$resOverzichtZaal4 = $mysqli->query($sqlOverzichtZaal4)){
                 $tempTitel = $row['titel'];
                 $tempTime = $row['start'];
 
-                print('<tbody>');
-                print('<tr onclick="document.location = #"');
-                print('<th></th>');
+                print('<tbody class="tbody-link">');
+                print('<tr onclick="document.location = #">');
                 print('<td><b>Starts at:  ' . $tempTime . '</b></td>');
-                print('<td><b>' . $tempTitel . '</b></td>');
+                print('<td class="title-link"><a href="detail_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;"><b>' . $tempTitel . '</b></a></td>');
                 print('<td></td>');
                 print('<td><b>Edit</b></td>');
                 print('</tr>');

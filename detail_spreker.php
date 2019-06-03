@@ -93,9 +93,9 @@ if(!$resDetailSprekers = $mysqli->query($sqlDetailSprekers)){
                     print('<img src="website/images/speakers/x250/' . $tempAfbeelding . '" alt="">');
                     print('<div class="row icons-detail">');
                     print('<ul>');
-                    print('<a href="#"><i class="far fa-heart"></i></i></a>&nbsp');
-                    print('<a href="https://www.facebook.com/"><i class="fab fa-facebook-square"></i></a>&nbsp');
-                    print('<a href="https://twitter.com"><i class="fab fa-twitter-square"></i></a>&nbsp');
+                    print('<a href="#"><i class="far fa-heart"></i></i></a>&nbsp;');
+                    print('<a href="https://www.facebook.com/"><i class="fab fa-facebook-square"></i></a>&nbsp;');
+                    print('<a href="https://twitter.com"><i class="fab fa-twitter-square"></i></a>&nbsp;');
                     print('<a href="https://www.linkedin.com"><i class="fab fa-linkedin"></i></a>');
                     print('</ul>');
                     print('</div>');

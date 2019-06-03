@@ -4,7 +4,8 @@ require_once('website/script/database.php');
 
 //Query voor sessie informatie op te halen
 
-$sqlDetailSessies = "SELECT * FROM sessies";
+$sqlDetailSessies = "SELECT s.idsessie, s.titel, s.start, s.omschrijving, s.afbeelding, s.zaalID, s.sprekerID, s.likecounter, z.idzalen, z.naam, ss.naam AS achternaam, ss.voornaam FROM sessies AS s 
+INNER JOIN zalen AS z ON s.zaalID = z.idzalen INNER JOIN sprekers AS ss ON s.sprekerID = ss.idsprekers WHERE idsessie = {$_GET['idsessie']}";
 
 //Query voor sessies
 if(!$resDetailSessies = $mysqli->query($sqlDetailSessies)){
@@ -83,18 +84,23 @@ if(!$resDetailSessies = $mysqli->query($sqlDetailSessies)){
                     $tempOmschrijving = $row['omschrijving'];
                     $tempAfbeelding = $row['afbeelding'];
                     $tempZaal = $row['zaalID'];
+                    $tempZaalNaam = $row['naam'];
+                    $tempSprekervoornaam = $row['voornaam'];
+                    $tempSprekernaam = $row['achternaam'];
+                    
 
                     print('<div class="row">');
                     print('<div class="col-7 sessie-content">');
                     print('<h4><b>' . $tempTitel . '</b></h4>');
-                    print('<h5><b>Keith Peters</b></h5> <br>');
-                    print('Auditorium - Pixel 1 <br>');
-                    print('' . $tempOmschrijving . '');
+                    print('<h5><b>' . $tempSprekervoornaam . '</b>&nbsp;<b>' . $tempSprekernaam . '</b></h5> <br>');
+                    print('' . $tempZaalNaam . '<br>');
+                    print('This session starts at: ' . $tempTime . '');
                     print('<p>' . $tempOmschrijving . '</p>');
                     print('<div class="row icons-detail">');
                     print('<ul>');
-                    print('<a href="#"><i class="fab fa-facebook-square"></i></a>');
-                    print('<a href="#"><i class="fab fa-twitter-square"></i></a>');
+                    print('<a href="#"><i class="far fa-heart"></i></i></a>&nbsp;');
+                    print('<a href="#"><i class="fab fa-facebook-square"></i></a>&nbsp;');
+                    print('<a href="#"><i class="fab fa-twitter-square"></i></a>&nbsp;');
                     print('<a href="#"><i class="fab fa-linkedin"></i></a>');
                     print('</ul>');
                     print('</div>');

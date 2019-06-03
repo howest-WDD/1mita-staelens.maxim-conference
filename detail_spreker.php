@@ -7,7 +7,7 @@ require_once('website/script/database.php');
 //INNER JOIN landen l ON s.lanidID = l.idlanden";
 
 $sqlDetailSprekers = "SELECT ss.idsprekers, ss.voornaam, ss.naam, ss.afbeelding, ss.bio, l.idlanden, l.voluit FROM sprekers ss 
-INNER JOIN landen l ON l.idlanden = ss.lanidID WHERE idsprekers = {$_GET['idsprekers']}";
+INNER JOIN landen l ON l.idlanden = ss.lanidID WHERE ss.idsprekers = {$_GET['idsprekers']}";
 
 //Query voor sprekers
 if(!$resDetailSprekers = $mysqli->query($sqlDetailSprekers)){

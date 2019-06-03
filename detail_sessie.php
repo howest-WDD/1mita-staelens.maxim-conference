@@ -5,7 +5,7 @@ require_once('website/script/database.php');
 //Query voor sessie informatie op te halen
 
 $sqlDetailSessies = "SELECT s.idsessie, s.titel, s.start, s.omschrijving, s.afbeelding, s.zaalID, s.sprekerID, s.likecounter, z.idzalen, z.naam, ss.naam AS achternaam, ss.voornaam FROM sessies AS s 
-INNER JOIN zalen AS z ON s.zaalID = z.idzalen INNER JOIN sprekers AS ss ON s.sprekerID = ss.idsprekers WHERE idsessie = {$_GET['idsessie']}";
+INNER JOIN zalen AS z ON s.zaalID = z.idzalen INNER JOIN sprekers AS ss ON s.sprekerID = ss.idsprekers WHERE s.idsessie = {$_GET['idsessie']}";
 
 //Query voor sessies
 if(!$resDetailSessies = $mysqli->query($sqlDetailSessies)){
@@ -98,7 +98,7 @@ if(!$resDetailSessies = $mysqli->query($sqlDetailSessies)){
                     print('<p>' . $tempOmschrijving . '</p>');
                     print('<div class="row icons-detail">');
                     print('<ul>');
-                    print('<a href="#"><i class="far fa-heart"></i></i></a>&nbsp;');
+                    print('<a href="like_code.php?idsessie=' . $tempId . '"><i class="far fa-heart"></i></i></a>&nbsp;');
                     print('<a href="#"><i class="fab fa-facebook-square"></i></a>&nbsp;');
                     print('<a href="#"><i class="fab fa-twitter-square"></i></a>&nbsp;');
                     print('<a href="#"><i class="fab fa-linkedin"></i></a>');

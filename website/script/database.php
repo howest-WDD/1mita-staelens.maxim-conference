@@ -16,6 +16,8 @@ if ($mysqli->connect_errno) {
     // Je zou de gebruiker naar een mooie foutpagina kunnen brengen, of gewoon
     // stoppen
     exit();
+}else{
+    $mysqli->set_charset('utf8');
 }
 
 ?>

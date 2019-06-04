@@ -3,16 +3,19 @@
 require_once('website/script/database.php');
 
 //Query voor zaal informatie op te halen
-$sqlOverzichtZaal1 = "SELECT * FROM sessies WHERE zaalID = 100";
+$sqlOverzichtZaal1 = "SELECT * FROM sessies WHERE zaalID = 100 ORDER BY `start` ASC";
 
 //Query voor zaal informatie op te halen
-$sqlOverzichtZaal2 = "SELECT * FROM sessies WHERE zaalID = 101";
+$sqlOverzichtZaal2 = "SELECT * FROM sessies WHERE zaalID = 101 ORDER BY `start` ASC";
 
 //Query voor zaal informatie op te halen
-$sqlOverzichtZaal3 = "SELECT * FROM sessies WHERE zaalID = 102";
+$sqlOverzichtZaal3 = "SELECT * FROM sessies WHERE zaalID = 102 ORDER BY `start` ASC";
 
 //Query voor zaal informatie op te halen
-$sqlOverzichtZaal4 = "SELECT * FROM sessies WHERE zaalID = 103";
+$sqlOverzichtZaal4 = "SELECT * FROM sessies WHERE zaalID = 103 ORDER BY `start` ASC";
+
+//Query voor zaal informatie op te halen
+$sqlOverzichtZaal5 = "SELECT * FROM sessies WHERE zaalID = 104 ORDER BY `start` ASC";
 
 //Query voor zalen
 if(!$resOverzichtZaal1 = $mysqli->query($sqlOverzichtZaal1)){
@@ -37,6 +40,13 @@ if(!$resOverzichtZaal3 = $mysqli->query($sqlOverzichtZaal3)){
 
 //Query voor zalen 4
 if(!$resOverzichtZaal4 = $mysqli->query($sqlOverzichtZaal4)){
+    echo "Oeps, een query foutje op DB voor opzoeken sessies";
+    print("<p>Error: " . $mysqli->error . "</p>");
+    exit();
+}
+
+//Query voor zalen 5
+if(!$resOverzichtZaal5 = $mysqli->query($sqlOverzichtZaal5)){
     echo "Oeps, een query foutje op DB voor opzoeken sessies";
     print("<p>Error: " . $mysqli->error . "</p>");
     exit();
@@ -124,8 +134,8 @@ if(!$resOverzichtZaal4 = $mysqli->query($sqlOverzichtZaal4)){
                 print('<tr onclick=document.location = "#">');
                 print('<td><b>Starts at:  ' . $tempTime . '</b></td>');
                 print('<td><a href="detail_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;"><b>' . $tempTitel . '</b></a></td>');
-                print('<td></td>');
-                print('<td><b>Edit</b></td>');
+                print('<td><b><a href="website/admin/update_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;">Edit</a></b></td>');
+                print('<td><b><a href="website/admin/delete_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;">Delete</a></b></td>');
                 print('</tr>');
                 print('</tbody>');
 
@@ -137,7 +147,7 @@ if(!$resOverzichtZaal4 = $mysqli->query($sqlOverzichtZaal4)){
                     </table>
                 </div>
                 <div class="row">
-                    <button class="btn btn-session">Add new session</button>
+                    <a href="website/admin/sessies.php" class="btn btn-session">Add new session</a>
                 </div>
             </div>
             
@@ -168,8 +178,8 @@ if(!$resOverzichtZaal4 = $mysqli->query($sqlOverzichtZaal4)){
                 print('<tr onclick="document.location = #">');
                 print('<td><b>Starts at:  ' . $tempTime . '</b></td>');
                 print('<td><a href="detail_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;"><b>' . $tempTitel . '</b></a></td>');
-                print('<td></td>');
-                print('<td><b>Edit</b></td>');
+                print('<td><b><a href="website/admin/update_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;">Edit</a></b></td>');
+                print('<td><b><a href="website/admin/delete_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;">Delete</a></b></td>');
                 print('</tr>');
                 print('</tbody>');
                 
@@ -180,7 +190,7 @@ if(!$resOverzichtZaal4 = $mysqli->query($sqlOverzichtZaal4)){
                     </table>
                 </div>
                 <div class="row">
-                    <button class="btn btn-session">Add new session</button>
+                    <a href="website/admin/sessies.php" class="btn btn-session">Add new session</a>
                 </div>
             </div>
 
@@ -211,8 +221,8 @@ if(!$resOverzichtZaal4 = $mysqli->query($sqlOverzichtZaal4)){
                 print('<tr onclick="document.location = #">');
                 print('<td><b>Starts at:  ' . $tempTime . '</b></td>');
                 print('<td><a href="detail_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;"><b>' . $tempTitel . '</b></a></td>');
-                print('<td></td>');
-                print('<td><b>Edit</b></td>');
+                print('<td><b><a href="website/admin/update_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;">Edit</a></b></td>');
+                print('<td><b><a href="website/admin/delete_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;">Delete</a></b></td>');
                 print('</tr>');
                 print('</tbody>');
                 
@@ -224,7 +234,7 @@ if(!$resOverzichtZaal4 = $mysqli->query($sqlOverzichtZaal4)){
                     </table>
                 </div>
                 <div class="row">
-                    <button class="btn btn-session">Add new session</button>
+                    <a href="website/admin/sessies.php" class="btn btn-session">Add new session</a>
                 </div>
             </div>
 
@@ -255,8 +265,8 @@ if(!$resOverzichtZaal4 = $mysqli->query($sqlOverzichtZaal4)){
                 print('<tr onclick="document.location = #">');
                 print('<td><b>Starts at:  ' . $tempTime . '</b></td>');
                 print('<td class="title-link"><a href="detail_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;"><b>' . $tempTitel . '</b></a></td>');
-                print('<td></td>');
-                print('<td><b>Edit</b></td>');
+                print('<td><b><a href="website/admin/update_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;">Edit</a></b></td>');
+                print('<td><b><a href="website/admin/delete_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;">Delete</a></b></td>');
                 print('</tr>');
                 print('</tbody>');
                 
@@ -267,7 +277,50 @@ if(!$resOverzichtZaal4 = $mysqli->query($sqlOverzichtZaal4)){
                     </table>
                 </div>
                 <div class="row">
-                    <button class="btn btn-session">Add new session</button>
+                    <a href="website/admin/sessies.php" class="btn btn-session">Add new session</a>
+                </div>
+            </div>
+
+            <div class="table-pixel">
+                <div class="row">
+                    <table class="table table-design table-hover-colour">
+                        <thead class="thead-colour">
+                            <tr>
+                                <th scope="col">Room: Pixel 5</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+
+                <?php
+        
+                //Ophalen van het resultaat van de query
+                //Doorlopen van het resultaat zolang er rijen zijn
+                while($row = $resOverzichtZaal5->fetch_assoc()){
+
+                //Opvullen tijdelijke variabele
+                $tempId = $row['idsessie'];
+                $tempTitel = $row['titel'];
+                $tempTime = $row['start'];
+
+                print('<tbody class="tbody-link">');
+                print('<tr onclick="document.location = #">');
+                print('<td><b>Starts at:  ' . $tempTime . '</b></td>');
+                print('<td class="title-link"><a href="detail_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;"><b>' . $tempTitel . '</b></a></td>');
+                print('<td><b><a href="website/admin/update_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;">Edit</a></b></td>');
+                print('<td><b><a href="website/admin/delete_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;">Delete</a></b></td>');
+                print('</tr>');
+                print('</tbody>');
+                
+                }
+        
+                ?>
+
+                    </table>
+                </div>
+                <div class="row">
+                    <a href="website/admin/sessies.php" class="btn btn-session">Add new session</a>
                 </div>
             </div>
             

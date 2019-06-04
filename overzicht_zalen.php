@@ -134,7 +134,7 @@ if(!$resOverzichtZaal5 = $mysqli->query($sqlOverzichtZaal5)){
                 print('<tr onclick=document.location = "#">');
                 print('<td><b>Starts at:  ' . $tempTime . '</b></td>');
                 print('<td><a href="detail_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;"><b>' . $tempTitel . '</b></a></td>');
-                print('<td><b>Edit</b></td>');
+                print('<td><b><a href="website/admin/update_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;">Edit</a></b></td>');
                 print('<td><b><a href="website/admin/delete_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;">Delete</a></b></td>');
                 print('</tr>');
                 print('</tbody>');
@@ -178,7 +178,7 @@ if(!$resOverzichtZaal5 = $mysqli->query($sqlOverzichtZaal5)){
                 print('<tr onclick="document.location = #">');
                 print('<td><b>Starts at:  ' . $tempTime . '</b></td>');
                 print('<td><a href="detail_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;"><b>' . $tempTitel . '</b></a></td>');
-                print('<td><b>Edit</b></td>');
+                print('<td><b><a href="website/admin/update_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;">Edit</a></b></td>');
                 print('<td><b><a href="website/admin/delete_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;">Delete</a></b></td>');
                 print('</tr>');
                 print('</tbody>');
@@ -221,7 +221,7 @@ if(!$resOverzichtZaal5 = $mysqli->query($sqlOverzichtZaal5)){
                 print('<tr onclick="document.location = #">');
                 print('<td><b>Starts at:  ' . $tempTime . '</b></td>');
                 print('<td><a href="detail_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;"><b>' . $tempTitel . '</b></a></td>');
-                print('<td><b>Edit</b></td>');
+                print('<td><b><a href="website/admin/update_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;">Edit</a></b></td>');
                 print('<td><b><a href="website/admin/delete_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;">Delete</a></b></td>');
                 print('</tr>');
                 print('</tbody>');
@@ -265,7 +265,7 @@ if(!$resOverzichtZaal5 = $mysqli->query($sqlOverzichtZaal5)){
                 print('<tr onclick="document.location = #">');
                 print('<td><b>Starts at:  ' . $tempTime . '</b></td>');
                 print('<td class="title-link"><a href="detail_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;"><b>' . $tempTitel . '</b></a></td>');
-                print('<td><b>Edit</b></td>');
+                print('<td><b><a href="website/admin/update_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;">Edit</a></b></td>');
                 print('<td><b><a href="website/admin/delete_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;">Delete</a></b></td>');
                 print('</tr>');
                 print('</tbody>');
@@ -308,7 +308,7 @@ if(!$resOverzichtZaal5 = $mysqli->query($sqlOverzichtZaal5)){
                 print('<tr onclick="document.location = #">');
                 print('<td><b>Starts at:  ' . $tempTime . '</b></td>');
                 print('<td class="title-link"><a href="detail_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;"><b>' . $tempTitel . '</b></a></td>');
-                print('<td><b>Edit</b></td>');
+                print('<td><b><a href="website/admin/update_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;">Edit</a></b></td>');
                 print('<td><b><a href="website/admin/delete_sessie.php?idsessie=' . $tempId . '" style="text-decoration: none;color: black;">Delete</a></b></td>');
                 print('</tr>');
                 print('</tbody>');

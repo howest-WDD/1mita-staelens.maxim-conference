@@ -76,52 +76,108 @@
         <div class="content-detail-sessie">    
         <section>
         <h1>Add new session</h1>
-        <form method="post" action="createverwerk.php">
+        <form method="post" action="add_sessie.php">
             <div class="form-group">
-                <label for="title">Name of session</label>
-                <input type="text" class="form-control" name="title" placeholder="Session">
+                <label for="title"><h4>Name of session</h4></label>
+                <input type="text" class="form-control" name="titel" placeholder="Session">
             </div>
-            
+            <label for="start-time"><h4>Start time</h4></label>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="start" value="10h30" checked> 10:30
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="start" value="11h30"> 11:30
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="start" value="12h30"> 12:30
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="start" value="14h00"> 14:00
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="start" value="15h00"> 15:00
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="start" value="16h00"> 16:00
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="start" value="17h00"> 17:00
+                </label>
+            </div>
             <div class="form-group">
-                <label for="title">Name of speaker</label>
-                <input type="text" class="form-control" name="title" placeholder="Speaker">
+                <label for="description"><h4>Description of session</h4></label> <br>
+                <textarea name="omschrijving" rows="4" cols="50"></textarea>
             </div>
-            <label for="title">Start time</label>
+            <label for="zaal"><h4>Zaal</h4></label>
             <div class="radio">
                 <label>
-                    <input type="radio" name="topping" value="Pepperoni" checked> 10:30
+                    <input type="radio" name="zaalID" value="100" checked> Pixel 1
                 </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="topping" value="Fish"> 11:30
+                    <input type="radio" name="zaalID" value="101"> Pixel 2
                 </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="topping" value="Mushrooms"> 12:30
+                    <input type="radio" name="zaalID" value="102"> Pixel 3
                 </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="topping" value="Mushrooms"> 14:00
+                    <input type="radio" name="zaalID" value="103"> Pixel 4
                 </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="topping" value="Mushrooms"> 15:00
+                    <input type="radio" name="zaalID" value="104"> Pixel 5
                 </label>
             </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="topping" value="Mushrooms"> 16:00
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="topping" value="Mushrooms"> 17:00
-                </label>
-            </div>
+            <label for="speaker"><h4>Speaker</h4></label> <br>
+                <select name="sprekerID">
+                    <option value="2001">Aral Balkan</option>
+                    <option value="2002">Michael O’Neill</option>
+                    <option value="2003">Ton Frederiks</option>
+                    <option value="2004">Frederic Lierman</option>
+                    <option value="2005">Brent Wilkey</option>
+                    <option value="2006">Jeremy Thorp</option>
+                    <option value="2007">Geert Coppens</option>
+                    <option value="2008">GRID VFX</option>
+                    <option value="2009">Ben Piquard</option>
+                    <option value="2010">Keith Peters</option>
+                    <option value="2011">Nicky Lauwerijssen</option>
+                    <option value="2012">Brendan Ciecko</option>
+                    <option value="2013">Xsens</option>
+                    <option value="2014">Bart Chanet</option>
+                    <option value="2015">Eboy</option>
+                    <option value="2016">Serge Jespers</option>
+                    <option value="2017">Christoph Rooms</option>
+                    <option value="2018">Donna Fenn</option>
+                    <option value="2019">Klaasjan Tukker</option>
+                    <option value="2020">Branden Hall</option>
+                    <option value="2021">Gill Cleeren</option>
+                    <option value="2022">Jasper Hesseling</option>
+                    <option value="2023">Doherty Fraser</option>
+                    <option value="2024">Katrijn Faket</option>
+                    <option value="2025">ADNERDS</option>
+                    <option value="2027">Veerle Pieters</option>
+                    <option value="2028">Little Miss Robot Ghent</option>
+                    <option value="2029">Floris Vos</option>
+                </select> <br> <br>
             <div class="form-group">
                 <input type="submit" class="btn btn-default" name="submit" value="Add session">
             </div>

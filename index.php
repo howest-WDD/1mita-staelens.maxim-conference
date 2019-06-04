@@ -1,3 +1,31 @@
+<?php 
+
+require_once('website/script/database.php');
+
+//Query voor zaalinfo zaal 1 op te halen
+
+$sqlCarouselZalen = "SELECT idzalen, naam, capaciteit, afbeelding FROM zalen WHERE idzalen = 100";
+
+//Query voor zaalinfo rest van zalen op te halen 
+
+$sqlCarouselRestZalen = "SELECT idzalen, naam, capaciteit, afbeelding FROM zalen LIMIT 1, 5";
+
+//Query voor sprekers
+if(!$resCarouselZalen = $mysqli->query($sqlCarouselZalen)){
+    echo "Oeps, een query foutje op DB voor opzoeken zalen";
+    print("<p>Error: " . $mysqli->error . "</p>");
+    exit();
+}
+
+//Query voor sprekers
+if(!$resCarouselRestZalen = $mysqli->query($sqlCarouselRestZalen)){
+  echo "Oeps, een query foutje op DB voor opzoeken zalen";
+  print("<p>Error: " . $mysqli->error . "</p>");
+  exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -87,42 +115,56 @@
           <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img
-              class="d-block w-100"
-              src="website/images/hacking-the-newsroom.jpg"
-              alt="First slide"
-            />
-            <div class="carousel-caption d-none d-md-block text-left">
-              <h5>Hacking the Newsroom</h5>
-              <p>This text will be replaced by database query later...</p>
-              <button class="btn">More info</button>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img
-              class="d-block w-100"
-              src="website/images/hacking-the-newsroom.jpg"
-              alt="Second slide"
-            />
-            <div class="carousel-caption d-none d-md-block text-left">
-              <h5>Hacking the Newsroom</h5>
-              <p>This text will be replaced by database query later...</p>
-              <button class="btn">More info</button>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img
-              class="d-block w-100"
-              src="website/images/hacking-the-newsroom.jpg"
-              alt="Third slide"
-            />
-            <div class="carousel-caption d-none d-md-block text-left">
-              <h5>Hacking the Newsroom</h5>
-              <p>This text will be replaced by database query later...</p>
-              <button class="btn">More info</button>
-            </div>
-          </div>
+
+        <?php 
+        
+              //Ophalen van het resultaat van de query
+              //Doorlopen van het resultaat zolang er rijen zijn
+              while($row = $resCarouselZalen->fetch_assoc()){
+
+                //Opvullen tijdelijke variabele
+                $tempId = $row['idzalen'];
+                $tempNaam = $row['naam'];
+                $tempCapaciteit = $row['capaciteit'];
+                $tempAfbeelding = $row['afbeelding'];
+
+                print('<div class="carousel-item item active">');
+                print('<img class="d-block w-100" src="website/images/' . $tempAfbeelding . '" alt="' . $tempNaam . '"/>');
+                print('<div class="carousel-caption d-none d-md-block text-left">');
+                print('<h5><b>' . $tempNaam . '</b></h5>');
+                print('<p><b>Deze zaal heeft een capaciteit van ' . $tempCapaciteit. ' personen.</b></p>');
+                print('<a href="overzicht_zalen.php" class="btn">More info</a>');
+                print('</div>');
+                print('</div>');
+        
+              }
+        
+        ?>  
+        <?php 
+              
+                //Ophalen van het resultaat van de query
+                //Doorlopen van het resultaat zolang er rijen zijn
+              while($row = $resCarouselRestZalen->fetch_assoc()){
+
+                //Opvullen tijdelijke variabele
+                $tempId = $row['idzalen'];
+                $tempNaam = $row['naam'];
+                $tempCapaciteit = $row['capaciteit'];
+                $tempAfbeelding = $row['afbeelding'];
+
+                print('<div class="carousel-item">');
+                print('<img class="d-block w-100" src="website/images/' . $tempAfbeelding . '" alt="' . $tempNaam . '"/>');
+                print('<div class="carousel-caption d-none d-md-block text-left">');
+                print('<h5><b>' . $tempNaam . '</b></h5>');
+                print('<p><b>Deze zaal heeft een capaciteit van ' . $tempCapaciteit. ' personen.</b></p>');
+                print('<a href="overzicht_zalen.php" class="btn">More info</a>');
+                print('</div>');
+                print('</div>');
+        
+              }
+        
+        ?> 
+         
         </div>
         <a
           class="carousel-control-prev"
@@ -151,36 +193,24 @@
           </div>
         </div>
         <div class="row homepage-content">
-          <div class="col-4">
+          <div class="col-3">
             <p>
-              Far far away, behind the word mountains, far from the countries
-              Vokalia and Consonantia, there live the blind texts. Separated
-              they live in Bookmarksgrove right at the coast of the Semantics, a
-              large language ocean. A small river named Duden flows by their
-              place and supplies it with the necessary regelialia. It is a
-              paradisematic country, in which roasted parts of sentences fly
-              into your mouth. Even the all-powerful Pointing has no control
-              about the blind texts it is an almost unorthographic life One day
-              however a small line of blind text by the name of Lorem Ipsum
-              decided to leave for the far World of Grammar.
+
+              Multi-Mania is our one-stop shop for Enterprise IT education where attendees enjoy a longstanding tradition of advancing 
+              the enterprise technology industry. The event is handcrafted by volunteers to help professionals expand knowledge, enhance 
+              skills and increase organizational efficiencies by focusing on Multi-Mania’s three main tenets: Educate, Network, Influence. 
             </p>
           </div>
-          <div class="col-4">
+          <div class="col-3">
             <p>
-              The Big Oxmox advised her not to do so, because there were
-              thousands of bad Commas, wild Question Marks and devious Semikoli,
-              but the Little Blind Text didn’t listen. She packed her seven
-              versalia, put her initial into the belt and made herself on the
-              way. When she reached the first hills of the Italic Mountains, she
-              had a last view back on the skyline of her hometown
-              Bookmarksgrove, the headline of Alphabet Village and the subline
-              of her own road, the Line Lane. Pityful a rethoric question ran
-              over her cheek, then
+              Multi-Mania 2019 will feature 20+ technical sessions, covering key topics such as Programming, CS5 for professionals, 
+              VFX for film and TV, Animation and Silverlight 4. Experience plenty of enterprise IT professionals under one roof 
+              during interactive meet-ups and networking events, aimed at helping attendees shape and build lasting connections.  
             </p>
           </div>
-          <div class="col-4">
+          <div class="col-6">
             <img
-              src="website/images/conference-homepage.jpg"
+              src="website/images/homepage-image.jpg"
               alt="conference room"
               class="homepage-img"
             />

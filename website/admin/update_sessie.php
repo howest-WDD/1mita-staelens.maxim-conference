@@ -54,15 +54,15 @@ if (isset($_GET["idsessie"]) == true) {
               <img src="../../logo/logo-white.png" alt="conference logo" />
             </li>
             <li class="nav-items active">
-              <a class="nav-links" href="index.php"
+              <a class="nav-links" href="../../index.php"
                 >Home <span class="sr-only">(current)</span></a
               >
             </li>
             <li class="nav-items">
-              <a class="nav-links" href="overzicht_spreker.php">Speakers</a>
+              <a class="nav-links" href="../../overzicht_spreker.php">Speakers</a>
             </li>
             <li class="nav-items">
-              <a class="nav-links" href="overzicht_zalen.php">Schedule</a>
+              <a class="nav-links" href="../../overzicht_zalen.php">Schedule</a>
             </li>
             <li class="nav-items">
               <a class="nav-links" href="#">Sponsors</a>
@@ -244,13 +244,13 @@ if (isset($_GET["idsessie"]) == true) {
       </section>
       <section class="col-3 footer-content">
         <div class="row footer-items">
-          <a href="#"><b>Home</b></a>
+          <a href="../../index.php"><b>Home</b></a>
         </div>
         <div class="row footer-items">
-          <a href="#"><b>Speakers</b></a>
+          <a href="../../overzicht_spreker.php"><b>Speakers</b></a>
         </div>
         <div class="row footer-items">
-          <a href="#"><b>Schedule</b></a>
+          <a href="../../overzicht_zalen.php"><b>Schedule</b></a>
         </div>
         <div class="row footer-items">
           <a href="#"><b>Sponsors</b></a>

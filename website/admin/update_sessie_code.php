@@ -11,7 +11,7 @@ if(isset($_POST["submit"])==true){
     if($mysqli->error!==""){
         print("<p>Error: ".$mysqli->error."</p>");
     }
-    $stmt->bind_param("sisis", $title, $description, $zaal, $spreker, $sessie);
+    $stmt->bind_param("ssiii", $title, $description, $zaal, $spreker, $sessie);
 
     $title=$_POST['titel'];  
     $description=$_POST['omschrijving'];

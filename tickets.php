@@ -1,31 +1,3 @@
-<?php 
-
-require_once('website/script/database.php');
-
-//Query voor zaalinfo zaal 1 op te halen
-
-$sqlCarouselZalen = "SELECT idzalen, naam, capaciteit, afbeelding FROM zalen WHERE idzalen = 100";
-
-//Query voor zaalinfo rest van zalen op te halen 
-
-$sqlCarouselRestZalen = "SELECT idzalen, naam, capaciteit, afbeelding FROM zalen LIMIT 1, 5";
-
-//Query voor sprekers
-if(!$resCarouselZalen = $mysqli->query($sqlCarouselZalen)){
-    echo "Oeps, een query foutje op DB voor opzoeken zalen";
-    print("<p>Error: " . $mysqli->error . "</p>");
-    exit();
-}
-
-//Query voor sprekers
-if(!$resCarouselRestZalen = $mysqli->query($sqlCarouselRestZalen)){
-  echo "Oeps, een query foutje op DB voor opzoeken zalen";
-  print("<p>Error: " . $mysqli->error . "</p>");
-  exit();
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -104,7 +76,7 @@ if(!$resCarouselRestZalen = $mysqli->query($sqlCarouselRestZalen)){
         <div class="content-detail-sessie">    
         <section>
         <h1>Reserve your free tickets for Multi-Mania</h1>
-        <form method="post" action="">
+        <form method="post" action="website/admin/tickets_code.php">
             <div class="form-group">
                 <label for="title"><h4>Your name</h4></label>
                 <input type="text" class="form-control" name="voornaam" placeholder="Name">
@@ -123,7 +95,7 @@ if(!$resCarouselRestZalen = $mysqli->query($sqlCarouselRestZalen)){
             </div>
             <label for="numberoftickets"><h4>Number of tickets you wish to reserve</h4></label> <br>
             <h6>Max. 10 tickets per person.</h6>
-                <select name="sprekerID">
+                <select name="ticketAantal">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>

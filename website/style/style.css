@@ -299,6 +299,15 @@ tbody>tr:hover {
 
 /* End admin php*/
 
+/* Sponsor php */
+
+.card-padding{
+  padding: 25px;
+}
+
+
+/* End sponsor php */
+
 /* Footer layout */
 
 footer {

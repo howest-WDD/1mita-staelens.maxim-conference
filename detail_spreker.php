@@ -6,7 +6,7 @@ require_once('website/script/database.php');
 //$sqlDetailSprekers = "SELECT idsprekers, voornaam, naam, afbeelding, bio, lanidID FROM sprekers s 
 //INNER JOIN landen l ON s.lanidID = l.idlanden";
 
-$sqlDetailSprekers = "SELECT ss.idsprekers, ss.voornaam, ss.naam, ss.afbeelding, ss.bio, l.idlanden, l.voluit FROM sprekers ss 
+$sqlDetailSprekers = "SELECT ss.idsprekers, ss.likecounter, ss.voornaam, ss.naam, ss.afbeelding, ss.bio, l.idlanden, l.voluit FROM sprekers ss 
 INNER JOIN landen l ON l.idlanden = ss.lanidID WHERE ss.idsprekers = {$_GET['idsprekers']}";
 
 //Query voor sprekers
@@ -88,6 +88,7 @@ if(!$resDetailSprekers = $mysqli->query($sqlDetailSprekers)){
                     $tempNaam = $row['naam'];
                     $tempAfbeelding = $row['afbeelding'];
                     $tempBio = $row['bio'];
+                    $tempLikes = $row['likecounter'];
                     
 
                     //Alles printen
@@ -95,13 +96,13 @@ if(!$resDetailSprekers = $mysqli->query($sqlDetailSprekers)){
                     print('<img src="website/images/speakers/x250/' . $tempAfbeelding . '" alt="">');
                     print('<div class="row icons-detail">');
                     print('<ul>');
-                    print('<a href="#"><i class="far fa-heart"></i></i></a>&nbsp;');
+                    print('<a href="like_code.php?idsprekers=' . $tempId .'" class="btn-like"><i class="far fa-heart"></i></a>&nbsp;');  
                     print('<a href="https://www.facebook.com/"><i class="fab fa-facebook-square"></i></a>&nbsp;');
                     print('<a href="https://twitter.com"><i class="fab fa-twitter-square"></i></a>&nbsp;');
-                    print('<a href="https://www.linkedin.com"><i class="fab fa-linkedin"></i></a>');
+                    print('<a href="https://www.linkedin.com"><i class="fab fa-linkedin"></i></a>&nbsp;'); 
                     print('</ul>');
                     print('</div>');
-                    print('<p>20 likes</p>');
+                    print('<p>' . $tempLikes . ' likes</p>');
                     print('</div>');
                     print('<div class="col-8 content-detail">');
                     print('<h4><b>' . $tempVoornaam . '</b>&nbsp;<b>' . $tempNaam . '</b></h4>');

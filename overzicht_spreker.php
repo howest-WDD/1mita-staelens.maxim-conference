@@ -2,8 +2,26 @@
 
 require_once('website/script/database.php');
 
-//Query voor sprekers informatie op te halen
-$sqlOverzichtSprekers = "SELECT idsprekers, voornaam, naam, afbeelding, bio FROM sprekers";
+$sort = (isset($_GET['sort']) == true) ? $_GET['sort'] : '';
+
+//Query for speaker information
+$sqlOverzichtSprekers = "SELECT idsprekers, voornaam, naam, afbeelding, bio, likecounter FROM sprekers";
+
+//Sql ORDER BY
+if ($sort == 'alpha')
+{
+    $sqlOverzichtSprekers .= " ORDER BY voornaam DESC";
+}
+elseif ($sort == 'popular')
+{
+    $sqlOverzichtSprekers .= " ORDER BY idsprekers";
+}
+elseif ($sort == 'likes')
+{
+    $sqlOverzichtSprekers .= " ORDER BY likecounter DESC";
+}
+
+
 
 //Query voor sprekers
 if(!$resOverzichtSprekers = $mysqli->query($sqlOverzichtSprekers)){
@@ -24,7 +42,6 @@ function excerpt($content,$numberOfWords = 10){
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -79,9 +96,9 @@ function excerpt($content,$numberOfWords = 10){
         </nav>
         <div class="second-nav-speakers">
             <div class="row nav-speakers">
-                <div class="col-2"><a href="#">Newest</a></div>
-                <div class="col-2"><a href="#">Most popular</a></div>
-                <div class="col-2"><a href="#">Most likes</a></div>
+                <div class="col-2"><a href="overzicht_spreker.php?sort=alpha">Order alphabetical</a></div>
+                <div class="col-2"><a href="overzicht_spreker.php?sort=country">Order by country</a></div>
+                <div class="col-2"><a href="overzicht_spreker.php?sort=likes">Most likes</a></div>
             </div>
         </div>
         <div class="h-100 content-speakers">
@@ -98,6 +115,7 @@ function excerpt($content,$numberOfWords = 10){
                 $tempNaam = $row['naam'];
                 $tempAfbeelding = $row['afbeelding'];
                 $tempBio = $row['bio'];
+                $tempLikes = $row['likecounter'];
 
                 //Alles printen
                 print('<div class="col-3">');
@@ -109,12 +127,12 @@ function excerpt($content,$numberOfWords = 10){
                 print('<h4 class="card-title"><b>' . $tempVoornaam . '</b>&nbsp;<b>' . $tempNaam . '</b></h4>');
                 print('</div>');
                 print('<div class="col-4">');
-                print('<p class="likes">20 likes</p>');
+                print('<p class="likes">' . $tempLikes . ' likes</p>');
                 print('</div>');
                 print('</div>');
                 print('<p class="card-text">' . excerpt($tempBio, 10)  . '</p>');
                 print('<div class="row">');
-                print('<div class="col-2"><button class="btn-like"><i class="far fa-heart"></i></button></div>');
+                print('<div class="col-2"><a href="like_code.php?idsprekers=' . $tempId .'" class="btn-like"><i class="far fa-heart"></i></a></div>');
                 print('<div class="col-10"><a href="detail_spreker.php?idsprekers=' . $tempId .'" class="btn btn-more">More info</a></div>');
                 print('</div>');
                 print('</div>');

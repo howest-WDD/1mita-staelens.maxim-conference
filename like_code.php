@@ -1,21 +1,30 @@
-<?php  
+<?php 
 
 require_once('website/script/database.php');
 
-$sqlLikeSession = "SELECT idsessie, likecounter FROM sessies";
+if(isset($_GET['idsprekers'])){
+    //Ophalen waarde idsprekers
+    $id = $_GET['idsprekers'];
+ 
+    $a = "1";
+    $liked = $row['likecounter'];
+    $liked = $liked + $a;
 
-if(isset($_GET["idsessie"], $_GET["likecounter"]))  
- {  
-      $sessie = $_GET["idsessie"];  
-      $likes = (int)$_GET["likecounter"];  
-      if($sessie == "sessies")  
-      {  
-        $sqlInsertLikes = "INSERT INTO likecounter (idsessie) SELECT likecounter FROM sessies WHERE idsessie = {$_GET['idsessie']} LIMIT 1";
-         
-        header("location:detail_sessie.php");
-      }  
- }  
+    //Voorbereiden query
+    $sql = "UPDATE sprekers SET likecounter=$liked WHERE idsprekers=?";
 
+    //$stmt = statement
+    $stmt = $mysqli->prepare($sql);
 
+    //Parameter koppelen
+    $stmt->bind_param("i", $id);
 
-?>  
+    //Query uitvoeren
+    $stmt->execute();
+
+    
+}
+
+header("location:detail_spreker.php");
+
+?>

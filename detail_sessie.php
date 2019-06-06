@@ -39,7 +39,7 @@ if(!$resDetailSessies = $mysqli->query($sqlDetailSessies)){
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-items" id="nav-logo">
-                        <img src="logo/logo-white-update.png" alt="conference logo" />
+                        <a href="index.php"><img src="logo/logo-white-update.png" alt="conference logo" /></a>
                     </li>
                     <li class="nav-items active">
                         <a class="nav-links" href="index.php">Home <span class="sr-only">(current)</span></a>
@@ -68,7 +68,8 @@ if(!$resDetailSessies = $mysqli->query($sqlDetailSessies)){
                 </ul>
             </div>
         </nav>
-        <div class="h-100 container content-border">
+    </div>
+        <div class="h-100 container content-border sessie-padding">
             <div class="content-detail-sessie">
             
             <?php
@@ -100,9 +101,9 @@ if(!$resDetailSessies = $mysqli->query($sqlDetailSessies)){
                     print('<div class="row icons-detail">');
                     print('<ul>');
                     print('<a href="likesession_code.php?idsessie=' . $tempId .'"><i class="far fa-heart"></i></i></a>&nbsp;');
-                    print('<a href="#"><i class="fab fa-facebook-square"></i></a>&nbsp;');
-                    print('<a href="#"><i class="fab fa-twitter-square"></i></a>&nbsp;');
-                    print('<a href="#"><i class="fab fa-linkedin"></i></a>');
+                    print('<a href="https://www.facebook.com/"><i class="fab fa-facebook-square"></i></a>&nbsp;');
+                    print('<a href="https://www.twitter.com/"><i class="fab fa-twitter-square"></i></a>&nbsp;');
+                    print('<a href="https://www.linkedin.com/"><i class="fab fa-linkedin"></i></a>');
                     print('</ul>');
                     print('</div>');
                     print('</div>');
@@ -121,36 +122,38 @@ if(!$resDetailSessies = $mysqli->query($sqlDetailSessies)){
              
             </div>
         </div>
-        <footer class="row fixed-bottom">
-            <section class="col-3 footer-content">
+        <footer class="row">
+            <section class="col-lg-3 col-xs-1 col-sm-4 col-md-4 footer-content">
                 <div class="row footer-items">
                     <b>Sign up for the newsletter</b>
                 </div>
                 <div class="row footer-items">
-                    <input type="text" placeholder="Email address" name="mail" required /><a href="#"><button><i
-                                class="fas fa-chevron-right"></i></button></a>
+                <form method="post" action="website/admin/newsletter_code.php">
+                    <input type="email" placeholder="Email address" name="email" required /><a href="#"><button type="submit" name="submit">
+                    <i class="fas fa-chevron-right"></i></button></a>
+                </form>
                 </div>
             </section>
-            <section class="col-3 footer-content">
+            <section class="col-lg-3 col-xs-1 col-sm-2 col-md-2 footer-content">
                 <div class="row footer-items">
                     <b>Check us out on social media</b>
                 </div>
                 <div class="row footer-items icons">
                     <ul>
-                        <a href="#"><i class="fab fa-facebook-square"></i></a>
-                        <a href="#"><i class="fab fa-twitter-square"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.facebook.com/"><i class="fab fa-facebook-square"></i></a>
+                        <a href="https://www.twitter.com/"><i class="fab fa-twitter-square"></i></a>
+                        <a href="https://linkedin.com/"><i class="fab fa-linkedin"></i></a>
                     </ul>
                 </div>
             </section>
-            <section class="col-3 footer-content">
+            <section class="col-lg-3 col-xs-1 col-sm-4 col-md-4 footer-content">
                 <div class="row footer-items"><b>Contact us</b></div>
                 <div class="row footer-items">Graaf Karel de Goedelaan 5</div>
                 <div class="row footer-items">8500 Kortrijk</div>
                 <div class="row footer-items">Belgium</div>
                 <div class="row footer-items">conference.kortrijk@gmail.com</div>
             </section>
-            <section class="col-3 footer-content">
+            <section class="col-lg-3 col-xs-1 col-sm-2 col-md-2 footer-content">
                 <div class="row footer-items">
                     <a href="index.php"><b>Home</b></a>
                 </div>

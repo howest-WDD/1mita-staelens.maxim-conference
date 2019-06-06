@@ -5,13 +5,9 @@ require_once('website/script/database.php');
 if(isset($_GET['idsprekers'])){
     //Ophalen waarde idsprekers
     $id = $_GET['idsprekers'];
- 
-    $a = "1";
-    $liked = $row['likecounter'];
-    $liked = $liked + $a;
 
     //Voorbereiden query
-    $sql = "UPDATE sprekers SET likecounter=$liked WHERE idsprekers=?";
+    $sql = "UPDATE sprekers SET likecounter=likecounter+1 WHERE idsprekers=?";
 
     //$stmt = statement
     $stmt = $mysqli->prepare($sql);
@@ -25,6 +21,6 @@ if(isset($_GET['idsprekers'])){
     
 }
 
-header("location:detail_spreker.php");
+header("location:overzicht_spreker.php");
 
 ?>

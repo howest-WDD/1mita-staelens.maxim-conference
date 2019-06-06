@@ -2,8 +2,26 @@
 
 require_once('website/script/database.php');
 
-//Query voor sprekers informatie op te halen
-$sqlOverzichtSprekers = "SELECT idsprekers, voornaam, naam, afbeelding, bio FROM sprekers";
+$sort = (isset($_GET['sort']) == true) ? $_GET['sort'] : '';
+
+//Query for speaker information
+$sqlOverzichtSprekers = "SELECT idsprekers, voornaam, naam, afbeelding, bio, likecounter FROM sprekers";
+
+//Sql ORDER BY
+if ($sort == 'alpha')
+{
+    $sqlOverzichtSprekers .= " ORDER BY voornaam DESC";
+}
+elseif ($sort == 'popular')
+{
+    $sqlOverzichtSprekers .= " ORDER BY idsprekers";
+}
+elseif ($sort == 'likes')
+{
+    $sqlOverzichtSprekers .= " ORDER BY likecounter DESC";
+}
+
+
 
 //Query voor sprekers
 if(!$resOverzichtSprekers = $mysqli->query($sqlOverzichtSprekers)){
@@ -24,7 +42,6 @@ function excerpt($content,$numberOfWords = 10){
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,7 +65,7 @@ function excerpt($content,$numberOfWords = 10){
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-items" id="nav-logo">
-                        <img src="logo/logo-white.png" alt="conference logo" />
+                        <img src="logo/logo-white-update.png" alt="conference logo" />
                     </li>
                     <li class="nav-items active">
                         <a class="nav-links" href="index.php">Home <span class="sr-only">(current)</span></a>
@@ -60,10 +77,10 @@ function excerpt($content,$numberOfWords = 10){
                         <a class="nav-links" href="overzicht_zalen.php">Schedule</a>
                     </li>
                     <li class="nav-items">
-                        <a class="nav-links" href="#">Sponsors</a>
+                        <a class="nav-links" href="sponsors.php">Sponsors</a>
                     </li>
                     <li class="nav-items">
-                        <a class="nav-links" href="#">Tickets</a>
+                        <a class="nav-links" href="tickets.php">Tickets</a>
                     </li>
                     <li class="nav-items">
                         <form class="form-inline">
@@ -79,9 +96,9 @@ function excerpt($content,$numberOfWords = 10){
         </nav>
         <div class="second-nav-speakers">
             <div class="row nav-speakers">
-                <div class="col-2"><a href="#">Newest</a></div>
-                <div class="col-2"><a href="#">Most popular</a></div>
-                <div class="col-2"><a href="#">Most likes</a></div>
+                <div class="col-lg-2 col-xs-3"><a href="overzicht_spreker.php?sort=alpha">Order alphabetical</a></div>
+                <div class="col-lg-2 col-xs-3"><a href="overzicht_spreker.php?sort=country">Order by country</a></div>
+                <div class="col-lg-2 col-xs-3"><a href="overzicht_spreker.php?sort=likes">Most likes</a></div>
             </div>
         </div>
         <div class="h-100 content-speakers">
@@ -98,9 +115,10 @@ function excerpt($content,$numberOfWords = 10){
                 $tempNaam = $row['naam'];
                 $tempAfbeelding = $row['afbeelding'];
                 $tempBio = $row['bio'];
+                $tempLikes = $row['likecounter'];
 
                 //Alles printen
-                print('<div class="col-3">');
+                print('<div class="col-lg-3 col-xs-12 col-sm-12 col-md-6">');
                 print('<div class="card">');
                 print('<img class="card-img-top" src="website/images/speakers/x250/' . $tempAfbeelding . '" alt="Card image">');
                 print('<div class="card-body">');
@@ -109,12 +127,12 @@ function excerpt($content,$numberOfWords = 10){
                 print('<h4 class="card-title"><b>' . $tempVoornaam . '</b>&nbsp;<b>' . $tempNaam . '</b></h4>');
                 print('</div>');
                 print('<div class="col-4">');
-                print('<p class="likes">20 likes</p>');
+                print('<p class="likes">' . $tempLikes . ' likes</p>');
                 print('</div>');
                 print('</div>');
                 print('<p class="card-text">' . excerpt($tempBio, 10)  . '</p>');
                 print('<div class="row">');
-                print('<div class="col-2"><button class="btn-like"><i class="far fa-heart"></i></button></div>');
+                print('<div class="col-2"><a href="like_code.php?idsprekers=' . $tempId .'" class="btn" id="likeoverzicht"><i class="far fa-heart"></i></a></div>');
                 print('<div class="col-10"><a href="detail_spreker.php?idsprekers=' . $tempId .'" class="btn btn-more">More info</a></div>');
                 print('</div>');
                 print('</div>');
@@ -128,16 +146,18 @@ function excerpt($content,$numberOfWords = 10){
             </div>
         </div>
         <footer class="row">
-            <section class="col-3 footer-content">
+            <section class="col-lg-3 col-xs-1 col-sm-4 col-md-4 footer-content">
                 <div class="row footer-items">
                     <b>Sign up for the newsletter</b>
                 </div>
                 <div class="row footer-items">
-                    <input type="text" placeholder="Email address" name="mail" required /><a href="#"><button><i
-                                class="fas fa-chevron-right"></i></button></a>
+                <form method="post" action="website/admin/newsletter_code.php">
+                    <input type="email" placeholder="Email address" name="email" required /><a href="#"><button type="submit" name="submit">
+                    <i class="fas fa-chevron-right"></i></button></a>
+                </form>
                 </div>
             </section>
-            <section class="col-3 footer-content">
+            <section class="col-lg-3 col-xs-1 col-sm-2 col-md-2 footer-content">
                 <div class="row footer-items">
                     <b>Check us out on social media</b>
                 </div>
@@ -149,28 +169,28 @@ function excerpt($content,$numberOfWords = 10){
                     </ul>
                 </div>
             </section>
-            <section class="col-3 footer-content">
+            <section class="col-lg-3 col-xs-1 col-sm-4 col-md-4 footer-content">
                 <div class="row footer-items"><b>Contact us</b></div>
                 <div class="row footer-items">Graaf Karel de Goedelaan 5</div>
                 <div class="row footer-items">8500 Kortrijk</div>
                 <div class="row footer-items">Belgium</div>
                 <div class="row footer-items">conference.kortrijk@gmail.com</div>
             </section>
-            <section class="col-3 footer-content">
+            <section class="col-lg-3 col-xs-1 col-sm-2 col-md-2 footer-content">
                 <div class="row footer-items">
-                    <a href="#"><b>Home</b></a>
+                    <a href="index.php"><b>Home</b></a>
                 </div>
                 <div class="row footer-items">
-                    <a href="#"><b>Speakers</b></a>
+                    <a href="overzicht_spreker.php"><b>Speakers</b></a>
                 </div>
                 <div class="row footer-items">
-                    <a href="#"><b>Schedule</b></a>
+                    <a href="overzicht_zalen.php"><b>Schedule</b></a>
                 </div>
                 <div class="row footer-items">
-                    <a href="#"><b>Sponsors</b></a>
+                    <a href="sponsors.php"><b>Sponsors</b></a>
                 </div>
                 <div class="row footer-items">
-                    <a href="#"><b>Tickets</b></a>
+                    <a href="tickets.php"><b>Tickets</b></a>
                 </div>
             </section>
         </footer>

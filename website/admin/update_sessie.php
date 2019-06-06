@@ -51,7 +51,7 @@ if (isset($_GET["idsessie"]) == true) {
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-items" id="nav-logo">
-              <img src="../../logo/logo-white.png" alt="conference logo" />
+              <img src="../../logo/logo-white-update.png" alt="conference logo" />
             </li>
             <li class="nav-items active">
               <a class="nav-links" href="../../index.php"

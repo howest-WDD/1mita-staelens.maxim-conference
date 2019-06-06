@@ -2,14 +2,12 @@
 
 require_once('website/script/database.php');
 
-//Query voor sessie informatie op te halen
+//Query for speaker information
+$sqlOverzichtSponsors = "SELECT  sponsorID, afbeelding FROM sponsors";
 
-$sqlDetailSessies = "SELECT s.idsessie, s.titel, s.start, s.omschrijving, s.afbeelding, s.zaalID, s.sprekerID, s.likecounter, z.idzalen, z.naam, ss.naam AS achternaam, ss.voornaam FROM sessies AS s 
-INNER JOIN zalen AS z ON s.zaalID = z.idzalen INNER JOIN sprekers AS ss ON s.sprekerID = ss.idsprekers WHERE s.idsessie = {$_GET['idsessie']}";
-
-//Query voor sessies
-if(!$resDetailSessies = $mysqli->query($sqlDetailSessies)){
-    echo "Oeps, een query foutje op DB voor opzoeken sessies";
+//Query voor sprekers
+if(!$resOverzichtSponsors = $mysqli->query($sqlOverzichtSponsors)){
+    echo "Oeps, een query foutje op DB voor opzoeken sprekers";
     print("<p>Error: " . $mysqli->error . "</p>");
     exit();
 }
@@ -68,70 +66,46 @@ if(!$resDetailSessies = $mysqli->query($sqlDetailSessies)){
                 </ul>
             </div>
         </nav>
-        <div class="h-100 container content-border">
-            <div class="content-detail-sessie">
-            
+
+        <div class="h-100 content-speakers">
+            <div class="row">
+
             <?php
-            
-                //Ophalen van het resultaat van de query
-                //Doorlopen van het resultaat zolang er rijen zijn
-                while($row = $resDetailSessies->fetch_assoc()){
+
+                    //Ophalen van het resultaat van de query
+                    //Doorlopen van het resultaat zolang er rijen zijn
+                    while($row = $resOverzichtSponsors->fetch_assoc()){
 
                     //Opvullen tijdelijke variabele
-                    $tempId = $row['idsessie'];
-                    $tempTitel = $row['titel'];
-                    $tempTime = $row['start'];
-                    $tempOmschrijving = $row['omschrijving'];
+                    $tempId = $row['sponsorID'];
                     $tempAfbeelding = $row['afbeelding'];
-                    $tempZaal = $row['zaalID'];
-                    $tempZaalNaam = $row['naam'];
-                    $tempSprekervoornaam = $row['voornaam'];
-                    $tempSprekernaam = $row['achternaam'];
-                    $tempLikes = $row['likecounter'];
-                    
 
-                    print('<div class="row">');
-                    print('<div class="col-lg-7 col-xs-3 sessie-content">');
-                    print('<h4><b>' . $tempTitel . '</b>&nbsp;-&nbsp;' . $tempLikes . ' likes</h4>');
-                    print('<h5><b>' . $tempSprekervoornaam . '</b>&nbsp;<b>' . $tempSprekernaam . '</b></h5> <br>');
-                    print('' . $tempZaalNaam . '<br>');
-                    print('This session starts at: ' . $tempTime . '');
-                    print('<p>' . $tempOmschrijving . '</p>');
-                    print('<div class="row icons-detail">');
-                    print('<ul>');
-                    print('<a href="likesession_code.php?idsessie=' . $tempId .'"><i class="far fa-heart"></i></i></a>&nbsp;');
-                    print('<a href="#"><i class="fab fa-facebook-square"></i></a>&nbsp;');
-                    print('<a href="#"><i class="fab fa-twitter-square"></i></a>&nbsp;');
-                    print('<a href="#"><i class="fab fa-linkedin"></i></a>');
-                    print('</ul>');
+                    print('<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">');
+                    print('<div class="card">');
+                    print('<img class="card-img-top card-padding" src="website/images/sponsors/' . $tempAfbeelding . '" alt="Card image cap">');
                     print('</div>');
                     print('</div>');
-                    print('<div class="col-lg-5 col-xs-2 sessie-content">');
-                    print('<img src="website/images/sessions/' . $tempAfbeelding . '" alt="">');
-                    print('</div>');
-                    print('</div>');
-                    
 
+                    }
 
-                }
-
-
-            
             ?>
-             
+    
             </div>
         </div>
-        <footer class="row fixed-bottom">
-            <section class="col-3 footer-content">
+
+        <footer class="row">
+            <section class="col-lg-3 col-xs-1 col-sm-4 col-md-4 footer-content">
                 <div class="row footer-items">
                     <b>Sign up for the newsletter</b>
                 </div>
                 <div class="row footer-items">
-                    <input type="text" placeholder="Email address" name="mail" required /><a href="#"><button><i
-                                class="fas fa-chevron-right"></i></button></a>
+                <form method="post" action="website/admin/newsletter_code.php">
+                    <input type="email" placeholder="Email address" name="email" required /><a href="#"><button type="submit" name="submit">
+                    <i class="fas fa-chevron-right"></i></button></a>
+                </form>
                 </div>
             </section>
-            <section class="col-3 footer-content">
+            <section class="col-lg-3 col-xs-1 col-sm-2 col-md-2 footer-content">
                 <div class="row footer-items">
                     <b>Check us out on social media</b>
                 </div>
@@ -143,14 +117,14 @@ if(!$resDetailSessies = $mysqli->query($sqlDetailSessies)){
                     </ul>
                 </div>
             </section>
-            <section class="col-3 footer-content">
+            <section class="col-lg-3 col-xs-1 col-sm-4 col-md-4 footer-content">
                 <div class="row footer-items"><b>Contact us</b></div>
                 <div class="row footer-items">Graaf Karel de Goedelaan 5</div>
                 <div class="row footer-items">8500 Kortrijk</div>
                 <div class="row footer-items">Belgium</div>
                 <div class="row footer-items">conference.kortrijk@gmail.com</div>
             </section>
-            <section class="col-3 footer-content">
+            <section class="col-lg-3 col-xs-1 col-sm-2 col-md-2 footer-content">
                 <div class="row footer-items">
                     <a href="index.php"><b>Home</b></a>
                 </div>

@@ -1,47 +1,3 @@
-<?php 
-
-require_once('website/script/database.php');
-
-$sort = (isset($_GET['sort']) == true) ? $_GET['sort'] : '';
-
-//Query for speaker information
-$sqlOverzichtSprekers = "SELECT idsprekers, voornaam, naam, afbeelding, bio, likecounter FROM sprekers";
-
-//Sql ORDER BY
-if ($sort == 'alpha')
-{
-    $sqlOverzichtSprekers .= " ORDER BY voornaam DESC";
-}
-elseif ($sort == 'popular')
-{
-    $sqlOverzichtSprekers .= " ORDER BY idsprekers";
-}
-elseif ($sort == 'likes')
-{
-    $sqlOverzichtSprekers .= " ORDER BY likecounter DESC";
-}
-
-
-
-//Query voor sprekers
-if(!$resOverzichtSprekers = $mysqli->query($sqlOverzichtSprekers)){
-    echo "Oeps, een query foutje op DB voor opzoeken sprekers";
-    print("<p>Error: " . $mysqli->error . "</p>");
-    exit();
-}
-
-//Functie om woorden in bio te limiteren
-function excerpt($content,$numberOfWords = 10){
-    $contentWords = substr_count($content," ") + 1;
-    $words = explode(" ",$content,($numberOfWords+1));
-    if( $contentWords > $numberOfWords ){
-        $words[count($words) - 1] = '...';
-    }
-    $excerpt = join(" ",$words);
-    return $excerpt;
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,11 +17,11 @@ function excerpt($content,$numberOfWords = 10){
 
 <body class="h-100">
     <div class="h-100">
-        <nav class="navbar-nav navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar-nav navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-items" id="nav-logo">
-                        <img src="logo/logo-white-update.png" alt="conference logo" />
+                        <a href="index.php"><img src="logo/logo-white-update.png" alt="conference logo" /></a>
                     </li>
                     <li class="nav-items active">
                         <a class="nav-links" href="index.php">Home <span class="sr-only">(current)</span></a>
@@ -94,8 +50,9 @@ function excerpt($content,$numberOfWords = 10){
                 </ul>
             </div>
         </nav>
+    </div>
         <div class="h-100 container content-border newsletter">
-            <div class="col-12">
+            <div class="col-lg-12 col-xs-12">
                 <h1 class="text-center">You have succesfully registered for the newsletter!</h1>
                 <h4 class="text-center">Your email has been saved in our database, expect an email from us soon.</h4>
                 <div class="news-check"><i class="fas fa-check"></i></div>
@@ -119,9 +76,9 @@ function excerpt($content,$numberOfWords = 10){
                 </div>
                 <div class="row footer-items icons">
                     <ul>
-                        <a href="#"><i class="fab fa-facebook-square"></i></a>
-                        <a href="#"><i class="fab fa-twitter-square"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.facebook.com/"><i class="fab fa-facebook-square"></i></a>
+                        <a href="https://www.twitter.com/"><i class="fab fa-twitter-square"></i></a>
+                        <a href="https://linkedin.com/"><i class="fab fa-linkedin"></i></a>
                     </ul>
                 </div>
             </section>

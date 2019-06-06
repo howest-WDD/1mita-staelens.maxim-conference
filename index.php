@@ -58,48 +58,40 @@ if(!$resCarouselRestZalen = $mysqli->query($sqlCarouselRestZalen)){
 
   <body class="h-100">
     <div class="h-100">
-      <nav class="navbar-nav navbar-expand-lg navbar-light bg-light">
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-items" id="nav-logo">
-              <img src="logo/logo-white-update.png" alt="conference logo" />
-            </li>
-            <li class="nav-items active">
-              <a class="nav-links" href="index.php"
-                >Home <span class="sr-only">(current)</span></a
-              >
-            </li>
-            <li class="nav-items">
-              <a class="nav-links" href="overzicht_spreker.php">Speakers</a>
-            </li>
-            <li class="nav-items">
-              <a class="nav-links" href="overzicht_zalen.php">Schedule</a>
-            </li>
-            <li class="nav-items">
-              <a class="nav-links" href="#">Sponsors</a>
-            </li>
-            <li class="nav-items">
-              <a class="nav-links" href="#">Tickets</a>
-            </li>
-            <li class="nav-items">
-              <form class="form-inline">
-                <input
-                  class="form-control mr-sm-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <button
-                  class="btn btn-outline-success my-2 my-sm-0"
-                  type="submit"
-                >
-                  Search
-                </button>
-              </form>
-            </li>
-          </ul>
-        </div>
-      </nav>
+    <nav class="navbar-nav navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-items" id="nav-logo">
+                        <a href="index.php"><img src="logo/logo-white-update.png" alt="conference logo" /></a>
+                    </li>
+                    <li class="nav-items active">
+                        <a class="nav-links" href="index.php">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-items">
+                        <a class="nav-links" href="overzicht_spreker.php">Speakers</a>
+                    </li>
+                    <li class="nav-items">
+                        <a class="nav-links" href="overzicht_zalen.php">Schedule</a>
+                    </li>
+                    <li class="nav-items">
+                        <a class="nav-links" href="sponsors.php">Sponsors</a>
+                    </li>
+                    <li class="nav-items">
+                        <a class="nav-links" href="tickets.php">Tickets</a>
+                    </li>
+                    <li class="nav-items">
+                        <form class="form-inline">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search"
+                                aria-label="Search" />
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                                Search
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
       <div
         id="carouselExampleIndicators"
         class="carousel slide"
@@ -193,7 +185,7 @@ if(!$resCarouselRestZalen = $mysqli->query($sqlCarouselRestZalen)){
           </div>
         </div>
         <div class="row homepage-content">
-          <div class="col-3">
+          <div class="col-lg-3 col-xs-6">
             <p>
 
               Multi-Mania is our one-stop shop for Enterprise IT education where attendees enjoy a longstanding tradition of advancing 
@@ -201,14 +193,14 @@ if(!$resCarouselRestZalen = $mysqli->query($sqlCarouselRestZalen)){
               skills and increase organizational efficiencies by focusing on Multi-Mania’s three main tenets: Educate, Network, Influence. 
             </p>
           </div>
-          <div class="col-3">
+          <div class="col-lg-3 col-xs-6">
             <p>
               Multi-Mania 2019 will feature 20+ technical sessions, covering key topics such as Programming, CS5 for professionals, 
               VFX for film and TV, Animation and Silverlight 4. Experience plenty of enterprise IT professionals under one roof 
               during interactive meet-ups and networking events, aimed at helping attendees shape and build lasting connections.  
             </p>
           </div>
-          <div class="col-6">
+          <div class="col-lg-6 col-xs-12">
             <img
               src="website/images/homepage-image.jpg"
               alt="conference room"
@@ -219,58 +211,54 @@ if(!$resCarouselRestZalen = $mysqli->query($sqlCarouselRestZalen)){
       </div>
     </div>
     <footer class="row">
-      <section class="col-3 footer-content">
-        <div class="row footer-items">
-          <b>Sign up for the newsletter</b>
-        </div>
-        <div class="row footer-items">
-          <input
-            type="text"
-            placeholder="Email address"
-            name="mail"
-            required
-          /><a href="#"
-            ><button><i class="fas fa-chevron-right"></i></button
-          ></a>
-        </div>
-      </section>
-      <section class="col-3 footer-content">
-        <div class="row footer-items">
-          <b>Check us out on social media</b>
-        </div>
-        <div class="row footer-items icons">
-          <ul>
-            <a href="#"><i class="fab fa-facebook-square"></i></a>
-            <a href="#"><i class="fab fa-twitter-square"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-          </ul>
-        </div>
-      </section>
-      <section class="col-3 footer-content">
-        <div class="row footer-items"><b>Contact us</b></div>
-        <div class="row footer-items">Graaf Karel de Goedelaan 5</div>
-        <div class="row footer-items">8500 Kortrijk</div>
-        <div class="row footer-items">Belgium</div>
-        <div class="row footer-items">conference.kortrijk@gmail.com</div>
-      </section>
-      <section class="col-3 footer-content">
-        <div class="row footer-items">
-          <a href="#"><b>Home</b></a>
-        </div>
-        <div class="row footer-items">
-          <a href="#"><b>Speakers</b></a>
-        </div>
-        <div class="row footer-items">
-          <a href="#"><b>Schedule</b></a>
-        </div>
-        <div class="row footer-items">
-          <a href="#"><b>Sponsors</b></a>
-        </div>
-        <div class="row footer-items">
-          <a href="#"><b>Tickets</b></a>
-        </div>
-      </section>
-    </footer>
+            <section class="col-lg-3 col-xs-1 col-sm-4 col-md-4 footer-content">
+                <div class="row footer-items">
+                    <b>Sign up for the newsletter</b>
+                </div>
+                <div class="row footer-items">
+                <form method="post" action="website/admin/newsletter_code.php">
+                    <input type="email" placeholder="Email address" name="email" required /><a href="#"><button type="submit" name="submit">
+                    <i class="fas fa-chevron-right"></i></button></a>
+                </form>
+                </div>
+            </section>
+            <section class="col-lg-3 col-xs-1 col-sm-2 col-md-2 footer-content">
+                <div class="row footer-items">
+                    <b>Check us out on social media</b>
+                </div>
+                <div class="row footer-items icons">
+                    <ul>
+                        <a href="https://www.facebook.com/"><i class="fab fa-facebook-square"></i></a>
+                        <a href="https://www.twitter.com/"><i class="fab fa-twitter-square"></i></a>
+                        <a href="https://linkedin.com/"><i class="fab fa-linkedin"></i></a>
+                    </ul>
+                </div>
+            </section>
+            <section class="col-lg-3 col-xs-1 col-sm-4 col-md-4 footer-content">
+                <div class="row footer-items"><b>Contact us</b></div>
+                <div class="row footer-items">Graaf Karel de Goedelaan 5</div>
+                <div class="row footer-items">8500 Kortrijk</div>
+                <div class="row footer-items">Belgium</div>
+                <div class="row footer-items">conference.kortrijk@gmail.com</div>
+            </section>
+            <section class="col-lg-3 col-xs-1 col-sm-2 col-md-2 footer-content">
+                <div class="row footer-items">
+                    <a href="index.php"><b>Home</b></a>
+                </div>
+                <div class="row footer-items">
+                    <a href="overzicht_spreker.php"><b>Speakers</b></a>
+                </div>
+                <div class="row footer-items">
+                    <a href="overzicht_zalen.php"><b>Schedule</b></a>
+                </div>
+                <div class="row footer-items">
+                    <a href="sponsors.php"><b>Sponsors</b></a>
+                </div>
+                <div class="row footer-items">
+                    <a href="tickets.php"><b>Tickets</b></a>
+                </div>
+            </section>
+        </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

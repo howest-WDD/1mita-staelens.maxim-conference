@@ -37,7 +37,7 @@ if(!$resOverzichtSponsors = $mysqli->query($sqlOverzichtSponsors)){
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-items" id="nav-logo">
-                        <img src="logo/logo-white-update.png" alt="conference logo" />
+                        <a href="index.php"><img src="logo/logo-white-update.png" alt="conference logo" /></a>
                     </li>
                     <li class="nav-items active">
                         <a class="nav-links" href="index.php">Home <span class="sr-only">(current)</span></a>
@@ -66,7 +66,7 @@ if(!$resOverzichtSponsors = $mysqli->query($sqlOverzichtSponsors)){
                 </ul>
             </div>
         </nav>
-
+    </div>
         <div class="h-100 content-speakers">
             <div class="row">
 
@@ -111,9 +111,9 @@ if(!$resOverzichtSponsors = $mysqli->query($sqlOverzichtSponsors)){
                 </div>
                 <div class="row footer-items icons">
                     <ul>
-                        <a href="#"><i class="fab fa-facebook-square"></i></a>
-                        <a href="#"><i class="fab fa-twitter-square"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.facebook.com/"><i class="fab fa-facebook-square"></i></a>
+                        <a href="https://www.twitter.com/"><i class="fab fa-twitter-square"></i></a>
+                        <a href="https://linkedin.com/"><i class="fab fa-linkedin"></i></a>
                     </ul>
                 </div>
             </section>

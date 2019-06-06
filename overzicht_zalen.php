@@ -73,11 +73,11 @@ if(!$resOverzichtZaal5 = $mysqli->query($sqlOverzichtZaal5)){
 
 <body class="h-100">
     <div class="h-100">
-        <nav class="navbar-nav navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar-nav navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-items" id="nav-logo">
-                        <img src="logo/logo-white-update.png" alt="conference logo" />
+                        <a href="index.php"><img src="logo/logo-white-update.png" alt="conference logo" /></a>
                     </li>
                     <li class="nav-items active">
                         <a class="nav-links" href="index.php">Home <span class="sr-only">(current)</span></a>
@@ -89,10 +89,10 @@ if(!$resOverzichtZaal5 = $mysqli->query($sqlOverzichtZaal5)){
                         <a class="nav-links" href="overzicht_zalen.php">Schedule</a>
                     </li>
                     <li class="nav-items">
-                        <a class="nav-links" href="#">Sponsors</a>
+                        <a class="nav-links" href="sponsors.php">Sponsors</a>
                     </li>
                     <li class="nav-items">
-                        <a class="nav-links" href="#">Tickets</a>
+                        <a class="nav-links" href="tickets.php">Tickets</a>
                     </li>
                     <li class="nav-items">
                         <form class="form-inline">
@@ -106,6 +106,7 @@ if(!$resOverzichtZaal5 = $mysqli->query($sqlOverzichtZaal5)){
                 </ul>
             </div>
         </nav>
+    </div>
         <div class="h-100 content-zalen">
             <div class="table-pixel">
                 <div class="row">
@@ -326,49 +327,51 @@ if(!$resOverzichtZaal5 = $mysqli->query($sqlOverzichtZaal5)){
             
         </div>
         <footer class="row">
-            <section class="col-3 footer-content">
+            <section class="col-lg-3 col-xs-1 col-sm-4 col-md-4 footer-content">
                 <div class="row footer-items">
                     <b>Sign up for the newsletter</b>
                 </div>
                 <div class="row footer-items">
-                    <input type="text" placeholder="Email address" name="mail" required /><a href="#"><button><i
-                                class="fas fa-chevron-right"></i></button></a>
+                <form method="post" action="website/admin/newsletter_code.php">
+                    <input type="email" placeholder="Email address" name="email" required /><a href="#"><button type="submit" name="submit">
+                    <i class="fas fa-chevron-right"></i></button></a>
+                </form>
                 </div>
             </section>
-            <section class="col-3 footer-content">
+            <section class="col-lg-3 col-xs-1 col-sm-2 col-md-2 footer-content">
                 <div class="row footer-items">
                     <b>Check us out on social media</b>
                 </div>
                 <div class="row footer-items icons">
                     <ul>
-                        <a href="#"><i class="fab fa-facebook-square"></i></a>
-                        <a href="#"><i class="fab fa-twitter-square"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.facebook.com/"><i class="fab fa-facebook-square"></i></a>
+                        <a href="https://www.twitter.com/"><i class="fab fa-twitter-square"></i></a>
+                        <a href="https://linkedin.com/"><i class="fab fa-linkedin"></i></a>
                     </ul>
                 </div>
             </section>
-            <section class="col-3 footer-content">
+            <section class="col-lg-3 col-xs-1 col-sm-4 col-md-4 footer-content">
                 <div class="row footer-items"><b>Contact us</b></div>
                 <div class="row footer-items">Graaf Karel de Goedelaan 5</div>
                 <div class="row footer-items">8500 Kortrijk</div>
                 <div class="row footer-items">Belgium</div>
                 <div class="row footer-items">conference.kortrijk@gmail.com</div>
             </section>
-            <section class="col-3 footer-content">
+            <section class="col-lg-3 col-xs-1 col-sm-2 col-md-2 footer-content">
                 <div class="row footer-items">
-                    <a href="#"><b>Home</b></a>
+                    <a href="index.php"><b>Home</b></a>
                 </div>
                 <div class="row footer-items">
-                    <a href="#"><b>Speakers</b></a>
+                    <a href="overzicht_spreker.php"><b>Speakers</b></a>
                 </div>
                 <div class="row footer-items">
-                    <a href="#"><b>Schedule</b></a>
+                    <a href="overzicht_zalen.php"><b>Schedule</b></a>
                 </div>
                 <div class="row footer-items">
-                    <a href="#"><b>Sponsors</b></a>
+                    <a href="sponsors.php"><b>Sponsors</b></a>
                 </div>
                 <div class="row footer-items">
-                    <a href="#"><b>Tickets</b></a>
+                    <a href="tickets.php"><b>Tickets</b></a>
                 </div>
             </section>
         </footer>

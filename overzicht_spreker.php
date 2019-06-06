@@ -10,7 +10,7 @@ $sqlOverzichtSprekers = "SELECT idsprekers, voornaam, naam, afbeelding, bio, lik
 //Sql ORDER BY
 if ($sort == 'alpha')
 {
-    $sqlOverzichtSprekers .= " ORDER BY voornaam DESC";
+    $sqlOverzichtSprekers .= " ORDER BY voornaam ASC";
 }
 elseif ($sort == 'popular')
 {
@@ -61,11 +61,11 @@ function excerpt($content,$numberOfWords = 10){
 
 <body class="h-100">
     <div class="h-100">
-        <nav class="navbar-nav navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar-nav navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-items" id="nav-logo">
-                        <img src="logo/logo-white-update.png" alt="conference logo" />
+                        <a href="index.php"><img src="logo/logo-white-update.png" alt="conference logo" /></a>
                     </li>
                     <li class="nav-items active">
                         <a class="nav-links" href="index.php">Home <span class="sr-only">(current)</span></a>
@@ -94,6 +94,7 @@ function excerpt($content,$numberOfWords = 10){
                 </ul>
             </div>
         </nav>
+    </div>
         <div class="second-nav-speakers">
             <div class="row nav-speakers">
                 <div class="col-lg-2 col-xs-3"><a href="overzicht_spreker.php?sort=alpha">Order alphabetical</a></div>
@@ -163,9 +164,9 @@ function excerpt($content,$numberOfWords = 10){
                 </div>
                 <div class="row footer-items icons">
                     <ul>
-                        <a href="#"><i class="fab fa-facebook-square"></i></a>
-                        <a href="#"><i class="fab fa-twitter-square"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.facebook.com/"><i class="fab fa-facebook-square"></i></a>
+                        <a href="https://www.twitter.com/"><i class="fab fa-twitter-square"></i></a>
+                        <a href="https://linkedin.com/"><i class="fab fa-linkedin"></i></a>
                     </ul>
                 </div>
             </section>

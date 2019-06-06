@@ -40,7 +40,7 @@ body {
 }
 
 .btn-session {
-  width: 15%;
+  width: 20%;
 }
 
 .btn-more {
@@ -146,6 +146,10 @@ div .nav-items {
   border: 1px solid var(--main-border-color) !important;
   margin-top: 50px;
   margin-bottom: 25px;
+}
+
+.card:hover {
+  background-color: var(--main-lightdetail-color);
 }
 
 .likes {
@@ -258,6 +262,10 @@ tbody>tr:hover {
   color: black;
 }
 
+.spreker-padding{
+  margin-bottom: 200px;
+}
+
 /* End detail spreker */
 
 /* Detail sessie */
@@ -269,6 +277,10 @@ tbody>tr:hover {
 .sessie-content img {
   width: 100%;
   margin-top: 50px;
+}
+
+.sessie-padding{
+  margin-bottom: 275px;
 }
 
 /* End detail sessie */

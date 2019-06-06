@@ -97,7 +97,7 @@ if(!$resDetailSprekers = $mysqli->query($sqlDetailSprekers)){
                     print('<div class="row icons-detail">');
                     print('<ul>');
                     print('<a href="like_code.php?idsprekers=' . $tempId .'" class="" id="likedetail"><i class="far fa-heart"></i></a>&nbsp;');  
-                    print('<a href="https://www.facebook.com/"><i class="fab fa-facebook-square"></i></a>&nbsp;');
+                    print('<a href="https://www.facebook.com"><i class="fab fa-facebook-square"></i></a>&nbsp;');
                     print('<a href="https://twitter.com"><i class="fab fa-twitter-square"></i></a>&nbsp;');
                     print('<a href="https://www.linkedin.com"><i class="fab fa-linkedin"></i></a>');
                     print('</ul>');
@@ -109,8 +109,8 @@ if(!$resDetailSprekers = $mysqli->query($sqlDetailSprekers)){
                     print('<b>Bio</b>');
                     print('<p>' . $tempBio . '</p>');
                     print('<b>Socials and website</b> <br>');
-                    print('<a href="#">wwww.programmingisart.com</a> <br>');
-                    print('<a href="">keith.peters@gmail.com</a>');
+                    print('<a href="wwww.' . $tempNaam . '' . $tempVoornaam . '.com" style="text-transform:lowercase;">wwww.' . $tempNaam . '' . $tempVoornaam . '.com</a> <br>');
+                    print('<a href="' . $tempVoornaam . '.' . $tempNaam. '@gmail.com" style="text-transform:lowercase;">' . $tempVoornaam . '.' . $tempNaam. '@gmail.com</a>');
                     print('</div>');
 
                     

@@ -21,6 +21,15 @@ if(isset($_GET['idsprekers'])){
     
 }
 
-header("location:overzicht_spreker.php");
+$likeoverzicht = print('<div class="col-2"><a href="like_code.php?idsprekers=' . $tempId .'" class="btn" id="likeoverzicht"><i class="far fa-heart"></i></a></div>');
+$likedetail = print('<a href="like_code.php?idsprekers=' . $tempId .'" class="" id="likedetail"><i class="far fa-heart"></i></a>&nbsp;');
+
+if ($likeoverzicht == true){
+    header("location:overzicht_spreker.php");
+}else if($likedetail == true){
+    header("location:detail_spreker.php?idsprekers=$id");
+}
+
+
 
 ?>

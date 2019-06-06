@@ -77,10 +77,10 @@ function excerpt($content,$numberOfWords = 10){
                         <a class="nav-links" href="overzicht_zalen.php">Schedule</a>
                     </li>
                     <li class="nav-items">
-                        <a class="nav-links" href="#">Sponsors</a>
+                        <a class="nav-links" href="sponsors.php">Sponsors</a>
                     </li>
                     <li class="nav-items">
-                        <a class="nav-links" href="#">Tickets</a>
+                        <a class="nav-links" href="tickets.php">Tickets</a>
                     </li>
                     <li class="nav-items">
                         <form class="form-inline">
@@ -96,9 +96,9 @@ function excerpt($content,$numberOfWords = 10){
         </nav>
         <div class="second-nav-speakers">
             <div class="row nav-speakers">
-                <div class="col-2"><a href="overzicht_spreker.php?sort=alpha">Order alphabetical</a></div>
-                <div class="col-2"><a href="overzicht_spreker.php?sort=country">Order by country</a></div>
-                <div class="col-2"><a href="overzicht_spreker.php?sort=likes">Most likes</a></div>
+                <div class="col-lg-2 col-xs-3"><a href="overzicht_spreker.php?sort=alpha">Order alphabetical</a></div>
+                <div class="col-lg-2 col-xs-3"><a href="overzicht_spreker.php?sort=country">Order by country</a></div>
+                <div class="col-lg-2 col-xs-3"><a href="overzicht_spreker.php?sort=likes">Most likes</a></div>
             </div>
         </div>
         <div class="h-100 content-speakers">
@@ -118,7 +118,7 @@ function excerpt($content,$numberOfWords = 10){
                 $tempLikes = $row['likecounter'];
 
                 //Alles printen
-                print('<div class="col-3">');
+                print('<div class="col-lg-3 col-xs-12 col-sm-12 col-md-6">');
                 print('<div class="card">');
                 print('<img class="card-img-top" src="website/images/speakers/x250/' . $tempAfbeelding . '" alt="Card image">');
                 print('<div class="card-body">');
@@ -132,7 +132,7 @@ function excerpt($content,$numberOfWords = 10){
                 print('</div>');
                 print('<p class="card-text">' . excerpt($tempBio, 10)  . '</p>');
                 print('<div class="row">');
-                print('<div class="col-2"><a href="like_code.php?idsprekers=' . $tempId .'" class="btn-like"><i class="far fa-heart"></i></a></div>');
+                print('<div class="col-2"><a href="like_code.php?idsprekers=' . $tempId .'" class="btn" id="likeoverzicht"><i class="far fa-heart"></i></a></div>');
                 print('<div class="col-10"><a href="detail_spreker.php?idsprekers=' . $tempId .'" class="btn btn-more">More info</a></div>');
                 print('</div>');
                 print('</div>');
@@ -176,19 +176,19 @@ function excerpt($content,$numberOfWords = 10){
             </section>
             <section class="col-3 footer-content">
                 <div class="row footer-items">
-                    <a href="#"><b>Home</b></a>
+                    <a href="index.php"><b>Home</b></a>
                 </div>
                 <div class="row footer-items">
-                    <a href="#"><b>Speakers</b></a>
+                    <a href="overzicht_spreker.php"><b>Speakers</b></a>
                 </div>
                 <div class="row footer-items">
-                    <a href="#"><b>Schedule</b></a>
+                    <a href="overzicht_zalen.php"><b>Schedule</b></a>
                 </div>
                 <div class="row footer-items">
-                    <a href="#"><b>Sponsors</b></a>
+                    <a href="sponsors.php"><b>Sponsors</b></a>
                 </div>
                 <div class="row footer-items">
-                    <a href="#"><b>Tickets</b></a>
+                    <a href="tickets.php"><b>Tickets</b></a>
                 </div>
             </section>
         </footer>

@@ -53,10 +53,10 @@ if(!$resDetailSprekers = $mysqli->query($sqlDetailSprekers)){
                         <a class="nav-links" href="overzicht_zalen.php">Schedule</a>
                     </li>
                     <li class="nav-items">
-                        <a class="nav-links" href="#">Sponsors</a>
+                        <a class="nav-links" href="sponsors.php">Sponsors</a>
                     </li>
                     <li class="nav-items">
-                        <a class="nav-links" href="#">Tickets</a>
+                        <a class="nav-links" href="tickets.php">Tickets</a>
                     </li>
                     <li class="nav-items">
                         <form class="form-inline">
@@ -92,20 +92,19 @@ if(!$resDetailSprekers = $mysqli->query($sqlDetailSprekers)){
                     
 
                     //Alles printen
-                    print('<div class="col-4">');
+                    print('<div class="col-lg-4 col-xs-2 col-sm-8 col-md-6">');
                     print('<img src="website/images/speakers/x250/' . $tempAfbeelding . '" alt="">');
                     print('<div class="row icons-detail">');
                     print('<ul>');
-                    print('<a href="like_code.php?idsprekers=' . $tempId .'" class="btn-like"><i class="far fa-heart"></i></a>&nbsp;');  
+                    print('<a href="like_code.php?idsprekers=' . $tempId .'" class="" id="likedetail"><i class="far fa-heart"></i></a>&nbsp;');  
                     print('<a href="https://www.facebook.com/"><i class="fab fa-facebook-square"></i></a>&nbsp;');
                     print('<a href="https://twitter.com"><i class="fab fa-twitter-square"></i></a>&nbsp;');
-                    print('<a href="https://www.linkedin.com"><i class="fab fa-linkedin"></i></a>&nbsp;'); 
+                    print('<a href="https://www.linkedin.com"><i class="fab fa-linkedin"></i></a>');
                     print('</ul>');
                     print('</div>');
-                    print('<p>' . $tempLikes . ' likes</p>');
                     print('</div>');
-                    print('<div class="col-8 content-detail">');
-                    print('<h4><b>' . $tempVoornaam . '</b>&nbsp;<b>' . $tempNaam . '</b></h4>');
+                    print('<div class="col-lg-8 col-xs-4 col-sm-4 col-md-6 content-detail">');
+                    print('<h4><b>' . $tempVoornaam . '</b>&nbsp;<b>' . $tempNaam . '</b>&nbsp;-&nbsp;' . $tempLikes . ' likes</h4>');
                     print('<h5><b>' . $tempLand . '</b></h5>');
                     print('<b>Bio</b>');
                     print('<p>' . $tempBio . '</p>');
@@ -155,19 +154,19 @@ if(!$resDetailSprekers = $mysqli->query($sqlDetailSprekers)){
             </section>
             <section class="col-3 footer-content">
                 <div class="row footer-items">
-                    <a href="#"><b>Home</b></a>
+                    <a href="index.php"><b>Home</b></a>
                 </div>
                 <div class="row footer-items">
-                    <a href="#"><b>Speakers</b></a>
+                    <a href="overzicht_spreker.php"><b>Speakers</b></a>
                 </div>
                 <div class="row footer-items">
-                    <a href="#"><b>Schedule</b></a>
+                    <a href="overzicht_zalen.php"><b>Schedule</b></a>
                 </div>
                 <div class="row footer-items">
-                    <a href="#"><b>Sponsors</b></a>
+                    <a href="sponsors.php"><b>Sponsors</b></a>
                 </div>
                 <div class="row footer-items">
-                    <a href="#"><b>Tickets</b></a>
+                    <a href="tickets.php"><b>Tickets</b></a>
                 </div>
             </section>
         </footer>

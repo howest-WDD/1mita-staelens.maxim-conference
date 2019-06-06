@@ -94,55 +94,11 @@ function excerpt($content,$numberOfWords = 10){
                 </ul>
             </div>
         </nav>
-        <div class="second-nav-speakers">
-            <div class="row nav-speakers">
-                <div class="col-lg-2 col-xs-3"><a href="overzicht_spreker.php?sort=alpha">Order alphabetical</a></div>
-                <div class="col-lg-2 col-xs-3"><a href="overzicht_spreker.php?sort=country">Order by country</a></div>
-                <div class="col-lg-2 col-xs-3"><a href="overzicht_spreker.php?sort=likes">Most likes</a></div>
-            </div>
-        </div>
-        <div class="h-100 content-speakers">
-            <div class="row">
-
-            <?php
-                //Ophalen van het resultaat van de query
-                //Doorlopen van het resultaat zolang er rijen zijn
-                while($row = $resOverzichtSprekers->fetch_assoc()){
-
-                //Opvullen tijdelijke variabele
-                $tempId = $row['idsprekers'];
-                $tempVoornaam = $row['voornaam'];
-                $tempNaam = $row['naam'];
-                $tempAfbeelding = $row['afbeelding'];
-                $tempBio = $row['bio'];
-                $tempLikes = $row['likecounter'];
-
-                //Alles printen
-                print('<div class="col-lg-3 col-xs-12 col-sm-12 col-md-6">');
-                print('<div class="card">');
-                print('<img class="card-img-top" src="website/images/speakers/x250/' . $tempAfbeelding . '" alt="Card image">');
-                print('<div class="card-body">');
-                print('<div class="row">');
-                print('<div class="col-8">');
-                print('<h4 class="card-title"><b>' . $tempVoornaam . '</b>&nbsp;<b>' . $tempNaam . '</b></h4>');
-                print('</div>');
-                print('<div class="col-4">');
-                print('<p class="likes">' . $tempLikes . ' likes</p>');
-                print('</div>');
-                print('</div>');
-                print('<p class="card-text">' . excerpt($tempBio, 10)  . '</p>');
-                print('<div class="row">');
-                print('<div class="col-2"><a href="like_code.php?idsprekers=' . $tempId .'" class="btn" id="likeoverzicht"><i class="far fa-heart"></i></a></div>');
-                print('<div class="col-10"><a href="detail_spreker.php?idsprekers=' . $tempId .'" class="btn btn-more">More info</a></div>');
-                print('</div>');
-                print('</div>');
-                print('</div>');
-                print('</div>');
-
-                }
-
-                ?>
-
+        <div class="h-100 container content-border newsletter">
+            <div class="col-12">
+                <h1 class="text-center">You have succesfully registered for the newsletter!</h1>
+                <h4 class="text-center">Your email has been saved in our database, expect an email from us soon.</h4>
+                <div class="news-check"><i class="fas fa-check"></i></div>
             </div>
         </div>
         <footer class="row">

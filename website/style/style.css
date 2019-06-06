@@ -258,6 +258,10 @@ tbody>tr:hover {
   color: black;
 }
 
+.spreker-padding{
+  margin-bottom: 200px;
+}
+
 /* End detail spreker */
 
 /* Detail sessie */
@@ -272,7 +276,7 @@ tbody>tr:hover {
 }
 
 .sessie-padding{
-  margin-bottom: 193px;
+  margin-bottom: 275px;
 }
 
 /* End detail sessie */
